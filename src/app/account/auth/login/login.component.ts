@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
 
     // reset login status
@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       if (environment.defaultauth === 'firebase') {
+        console.log("hola")
         this.authenticationService.login(this.f.email.value, this.f.password.value).then((res: any) => {
           this.router.navigate(['/dashboard']);
         })
@@ -66,11 +67,12 @@ export class LoginComponent implements OnInit {
             this.error = error ? error : '';
           });
       } else {
+        console.log("adios")
         this.authFackservice.login(this.f.email.value, this.f.password.value)
           .pipe(first())
           .subscribe(
             data => {
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/dashboards/jobs']);
             },
             error => {
               this.error = error ? error : '';

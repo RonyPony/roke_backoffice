@@ -26,6 +26,8 @@ export class AuthenticationService {
      * @param password password of user
      */
     login(email: string, password: string) {
+        console.log("hola")
+        
         return getFirebaseBackend().loginUser(email, password).then((response: any) => {
             const user = response;
             return user;

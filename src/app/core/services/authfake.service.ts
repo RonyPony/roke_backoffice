@@ -19,8 +19,9 @@ export class AuthfakeauthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(email: string, password: string) {
-        return this.http.post<any>(`https://localhost:7070/api/user/login`, { email, password })
+    login(user: string, password: string) {
+        console.log("hola")
+        return this.http.post<any>(`https://localhost:7070/api/user/login`, { user, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
