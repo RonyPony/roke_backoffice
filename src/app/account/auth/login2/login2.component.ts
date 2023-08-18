@@ -32,7 +32,7 @@ export class Login2Component implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
+      email: ['admin@Ronel&Kevin.com', [Validators.required, Validators.email]],
       password: ['123456', [Validators.required]],
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

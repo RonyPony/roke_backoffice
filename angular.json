@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "skote": {
+    "ROKE": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -22,7 +22,7 @@
               "ev-emitter/ev-emitter","can-use-dom","lodash.debounce","lodash.memoize","lodash.throttle","metismenujs/dist/metismenujs","sweetalert2",
               "@ckeditor/ckeditor5-build-classic"
             ],
-            "outputPath": "dist/skote",
+            "outputPath": "dist/ROKE",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -84,14 +84,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "skote:build"
+            "browserTarget": "ROKE:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "skote:build:production"
+              "browserTarget": "ROKE:build:production"
             },
             "development": {
-              "browserTarget": "skote:build:development"
+              "browserTarget": "ROKE:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,7 +99,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "skote:build"
+            "browserTarget": "ROKE:build"
           }
         },
         "test": {

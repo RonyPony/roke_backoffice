@@ -249,7 +249,7 @@ const emailSentBarChart: ChartType = {
     stroke: {
         width: [0, 0, 2, 2],
         curve: 'smooth'
-    }, 
+    },
     plotOptions: {
         bar: {
             columnWidth: '30%'
@@ -296,42 +296,42 @@ const vacancyData = [
     {
         image: 'assets/images/companies/airbnb.svg',
         title: 'Project Manager',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'California',
         vacancy: 8
     },
     {
         image: 'assets/images/companies/mailchimp.svg',
         title: 'Marketing Director',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Danemark',
         vacancy: 12
     },
     {
         image: 'assets/images/companies/reddit.svg',
         title: 'Product Designer',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'France',
         vacancy: 25
     },
     {
         image: 'assets/images/companies/amazon.svg',
         title: 'Magento Developer',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Hong-Kong',
         vacancy: 8
     },
     {
         image: 'assets/images/companies/adobe-photoshop.svg',
         title: 'Product Sales Specialist',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Louisiana',
         vacancy: 1
     },
     {
         image: 'assets/images/companies/line.svg',
         title: 'Business Associate',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Phoenix',
         vacancy: 15
     },
@@ -373,14 +373,14 @@ const recentJobsData = [
     {
         image: 'assets/images/companies/wechat.svg',
         title: 'Marketing Director',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'USA',
         time: 53
     },
     {
         image: 'assets/images/companies/sass.svg',
         title: 'Frontend Developer',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Hong-Kong',
         time: 47
     },
@@ -394,7 +394,7 @@ const recentJobsData = [
     {
         image: 'assets/images/companies/airbnb.svg',
         title: 'NodeJs Developer',
-        brand: 'Skote Themes',
+        brand: 'ROKE Themes',
         location: 'Louisiana',
         time: 2
     },
@@ -408,14 +408,14 @@ const recentJobsData = [
     {
         image: 'assets/images/companies/mailchimp.svg',
         title: 'Marketing Director',
-        brand: 'Skote Technology',
+        brand: 'ROKE Technology',
         location: 'Dominica',
         time: 1
     },
     {
         image: 'assets/images/companies/spotify.svg',
         title: 'Business Associate',
-        brand: 'Themesbrand',
+        brand: 'Ronel&Kevin',
         location: 'Russia',
         time: 2
     },
