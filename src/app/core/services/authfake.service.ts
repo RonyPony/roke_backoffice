@@ -19,12 +19,12 @@ export class AuthfakeauthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(user: string, password: string) {
+    login(username: string, password: string) {
         console.log("hola")
-        return this.http.post<any>(`https://localhost:7070/api/user/login`, { user, password })
+        return this.http.post<any>(`https://localhost:7070/api/user/login`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (user && user.result) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
