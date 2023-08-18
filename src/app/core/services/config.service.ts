@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ConfigService {
 
-  URL = 'assets/dashboard.json';
+  URL = 'https://localhost:7070/api/user/login';
 
   constructor(private http: HttpClient) { }
   getConfig() : Observable<any> {

@@ -8,7 +8,7 @@ export class UserProfileService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(`/api/login`);
+        return this.http.get<User[]>(`api/user/login`);
     }
 
     register(user: User) {
