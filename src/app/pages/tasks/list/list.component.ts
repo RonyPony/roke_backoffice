@@ -1,7 +1,7 @@
 import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import Swal from 'sweetalert2';
 import { NgbdJobListSortableHeader } from './list-sortable.directive';
@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
 
   // bread crumb items
   breadCrumbItems: Array<{}>;
-  jobListForm!: UntypedFormGroup;
+  jobListForm!: FormGroup;
   submitted: boolean = false;
 
   // Table data
@@ -40,14 +40,14 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Jobs' }, { label: 'Jobs List', active: true }];
+    this.breadCrumbItems = [{ label: 'Tareas' }, { label: 'Lista de Tareas', active: true }];
 
     this.jobListForm = this.fb.group({
       description: ['', [Validators.required]],
-      ticketTypeId: ['3fa85f64-5717-4562-b3fc-2c963f66afa6', [Validators.required]],
+      ticketTypeId: ['', [Validators.required]],
       contactName: ['', [Validators.required]],
       contactNumber: ['', [Validators.required]],
-      contactHasWhatsapp: ['', [Validators.required]]
+      contactHasWhatsapp: [false, [Validators.required]]
     });
 
     this.getAll();
@@ -131,39 +131,20 @@ export class ListComponent implements OnInit {
   */
   saveUser() {
     if (this.jobListForm.valid) {
-      if (this.jobListForm.get('ids')?.value) {
-        // this.service.products = JobListdata.map((data: { id: any; }) => data.id === this.jobListForm.get('ids')?.value ? { ...data, ...this.jobListForm.value } : data)
-      } else {
-        const title = this.jobListForm.get('title')?.value;
-        const name = this.jobListForm.get('name')?.value;
-        const location = this.jobListForm.get('location')?.value;
-        const experience = this.jobListForm.get('experience')?.value;
-        const position = this.jobListForm.get('position')?.value;
-        const type = this.jobListForm.get('type')?.value;
-        const posted_date = "02 June 2021";
-        const last_date = "25 June 2021";
-        const status = this.jobListForm.get('status')?.value;
-        // JobListdata.push({
-        //   id: this.lists.length + 1,
-        //   title,
-        //   name,
-        //   location,
-        //   experience,
-        //   position,
-        //   type,
-        //   type_color: "success",
-        //   posted_date,
-        //   last_date,
-        //   status,
-        //   status_color: "success"
-        // });
-      }
+      this.service.saveTicket(this.jobListForm.value)
+          .subscribe({
+            next: (data) => {
+              this.getAll();
+              this.modalService.hide();
+            }
+          })
     }
-    this.modalService.hide();
+
     setTimeout(() => {
       this.jobListForm.reset();
     }, 2000);
-    this.submitted = true
+
+    this.submitted = true;
   }
 
   /**

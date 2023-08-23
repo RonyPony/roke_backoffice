@@ -13,4 +13,8 @@ export class TicketService {
   GetAll() {
     return this.http.get<Ticket[]>(`${environment.urlApi}/api/Ticket`);
   }
+
+  saveTicket(data: any) {
+    return this.http.post<Ticket>(`${environment.urlApi}/api/Ticket`, data);
+  }
 }
