@@ -21,8 +21,8 @@ import { environment } from '../../../../environments/environment';
 export class LoginComponent implements OnInit {
 
   loginForm: UntypedFormGroup;
-  submitted:any = false;
-  error:any = '';
+  submitted: any = false;
+  error: any = '';
   returnUrl: string;
 
   // set the currenr year
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['admin@Ronel&Kevin.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
 
     // reset login status
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
             data => {
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/dashboards/jobs']);
             },
             error => {
               this.error = error ? error : '';
