@@ -147,28 +147,6 @@ export class ListComponent implements OnInit {
     this.submitted = true;
   }
 
-  /**
-   * Open Edit modal
-   * @param content modal content
-   */
-  // editDataGet(id: any, content: any) {
-  //   this.submitted = false;
-  //   this.modalRef = this.modalService.show(content, { class: 'modal-md' });
-  //   var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
-  //   modelTitle.innerHTML = 'Edit Order';
-  //   var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-  //   updateBtn.innerHTML = "Update";
-  //   var listData = this.lists.filter((data: { id: any; }) => data.id === id);
-  //   this.jobListForm.controls['title'].setValue(listData[0].title);
-  //   this.jobListForm.controls['name'].setValue(listData[0].name);
-  //   this.jobListForm.controls['location'].setValue(listData[0].location);
-  //   this.jobListForm.controls['experience'].setValue(listData[0].experience);
-  //   this.jobListForm.controls['position'].setValue(listData[0].position);
-  //   this.jobListForm.controls['type'].setValue(listData[0].type);
-  //   this.jobListForm.controls['status'].setValue(listData[0].status);
-  //   this.jobListForm.controls['ids'].setValue(listData[0].id);
-  // }
-
   pageChanged(event: any) {
     this.currentPage = event.page;
   }

@@ -274,12 +274,12 @@ export const MENU: MenuItem[] = [
             //     link: '/tasks/kanban',
             //     parentId: 45
             // },
-            {
-                id: 48,
-                label: 'MENUITEMS.TASKS.LIST.CREATETASK',
-                link: '/tasks/create',
-                parentId: 45
-            }
+            // {
+            //     id: 48,
+            //     label: 'MENUITEMS.TASKS.LIST.CREATETASK',
+            //     link: '/tasks/create',
+            //     parentId: 45
+            // }
         ]
     },
     // {

@@ -1,14 +1,19 @@
-export interface jobListModel {
-  id: number;
-  title: string;
-  name: string;
-  location: string;
-  experience: string;
-  position: any;
-  type: any;
-  type_color: any;
-  posted_date: any;
-  last_date: any;
-  status: any;
-  status_color: any;
+export interface User {
+  id: string;
+  idUser: number;
+  nombre: string;
+  apellido: string;
+  cedula: string;
+
+  statusuario: UsuarioStatus;
+  contacto: string;    
+  username: string;
+  password: string;
+  rol: string;
+}
+
+export enum UsuarioStatus {
+  Active,
+  disabled,
+  Deleted
 }

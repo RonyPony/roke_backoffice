@@ -17,7 +17,6 @@
             <table class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
                   <th scope="col">Descripción</th>
                   <th scope="col">Tipo de Ticket</th>
                   <th scope="col">Nombre de Contacto</th>
@@ -27,7 +26,6 @@
               </thead>
               <tbody>
                 <tr *ngFor="let data of lists">
-                  <th scope="row">{{data.id}}</th>
                   <td>{{data.description}}</td>
                   <td>{{data.ticketTypeId}}</td>
                   <td>{{data.contactName}}</td>
@@ -68,9 +66,9 @@
         <label for="payment-field" class="form-label">Tipo de Ticket</label>
         <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="ticketTypeId" [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
           <option value="">Seleccione un Tipo</option>
-          <option value="3fa85f64-5717-4562-b3fc-2c963f66afa6">Mantenimiento</option>
-          <option value="3fa85f64-5717-4562-b3fc-2c963f66afa6">Instalación</option>
-          <option value="3fa85f64-5717-4562-b3fc-2c963f66afa6">Reparación</option>
+          <option value="mantenimiento">Mantenimiento</option>
+          <option value="instalacion">Instalación</option>
+          <option value="reparación">Reparación</option>
         </select>
         <div *ngIf="submitted && form['ticketTypeId'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['ticketTypeId'].errors['required']">Tipo es requerida</div>
