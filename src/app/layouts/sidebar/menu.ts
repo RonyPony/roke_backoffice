@@ -333,16 +333,16 @@ export const MENU: MenuItem[] = [
     //     ]
     // },
     {
-        id: 57,
-        label: 'MENUITEMS.JOBS.TEXT',
-        icon: 'bx-briefcase-alt',
-        subItems: [
-            {
-                id: 58,
-                label: 'MENUITEMS.JOBS.LIST.JOBLIST',
-                link: '/jobs/list',
-                parentId: 57
-            },
+        // id: 57,
+        // label: 'MENUITEMS.JOBS.TEXT',
+        // icon: 'bx-briefcase-alt',
+        // subItems: [
+        //     {
+        //         id: 58,
+        //         label: 'MENUITEMS.JOBS.LIST.JOBLIST',
+        //         link: '/jobs/list',
+        //         parentId: 57
+        //     },
             // {
             //     id: 59,
             //     label: 'MENUITEMS.JOBS.LIST.JOBGRID',
@@ -390,7 +390,7 @@ export const MENU: MenuItem[] = [
             //         }
             //     ]
             // }
-        ]
+      //  ]
     },
     // {
     //     id: 66,
