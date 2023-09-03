@@ -27,12 +27,13 @@
               <tbody>
                 <tr *ngFor="let data of lists">
                   <td>{{data.description}}</td>
-                  <td>{{data.ticketTypeId}}</td>
+                  <td>{{data.ticketType}}</td>
                   <td>{{data.contactName}}</td>
                   <td>{{data.contactNumber}}</td>
                   <td>
                     <div class="form-check font-size-16">
-                      <input disabled id="customCheck" type="checkbox" class="form-check-input" [(ngModel)]="data.contactHasWhatsapp" />
+                      <input disabled id="customCheck" type="checkbox" class="form-check-input"
+                        [(ngModel)]="data.contactHasWhatsapp" />
                       <label class="form-check-label" for="customCheck">&nbsp;</label>
                     </div>
                   </td>
@@ -50,13 +51,15 @@
 <ng-template #content role="document" let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Crear Tarea</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal" (click)="modalRef?.hide()"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+      (click)="modalRef?.hide()"></button>
   </div>
   <form (ngSubmit)="saveUser()" [formGroup]="jobListForm">
     <div class="modal-body">
       <div class="mb-3">
         <label for="customername-field" class="form-label">Descripción</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="description" [ngClass]="{ 'is-invalid': submitted && form['title'].errors }" />
+        <input type="text" id="customername-field" class="form-control" required formControlName="description"
+          [ngClass]="{ 'is-invalid': submitted && form['title'].errors }" />
         <div *ngIf="submitted && form['description'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['description'].errors['required']">Descripción es requerida</div>
         </div>
@@ -64,28 +67,31 @@
 
       <div class="mb-3">
         <label for="payment-field" class="form-label">Tipo de Ticket</label>
-        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="ticketTypeId" [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
+        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="ticketType"
+          [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
           <option value="">Seleccione un Tipo</option>
           <option value="mantenimiento">Mantenimiento</option>
           <option value="instalacion">Instalación</option>
           <option value="reparación">Reparación</option>
         </select>
-        <div *ngIf="submitted && form['ticketTypeId'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['ticketTypeId'].errors['required']">Tipo es requerida</div>
+        <div *ngIf="submitted && form['ticketType'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['ticketType'].errors['required']">Tipo es requerida</div>
         </div>
       </div>
 
       <div class="mb-3">
         <label for="customername-field" class="form-label">Nombre de Contacto</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="contactName" [ngClass]="{ 'is-invalid': submitted && form['contactName'].errors }" />
+        <input type="text" id="customername-field" class="form-control" required formControlName="contactName"
+          [ngClass]="{ 'is-invalid': submitted && form['contactName'].errors }" />
         <div *ngIf="submitted && form['contactName'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['contactName'].errors['required']">Nombre de Contacto es requerida</div>
         </div>
       </div>
-      
+
       <div class="mb-3">
         <label for="customername-field" class="form-label">Numero de Contacto</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="contactNumber" [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
+        <input type="text" id="customername-field" class="form-control" required formControlName="contactNumber"
+          [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
         <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
         </div>
@@ -102,7 +108,8 @@
     </div>
     <div class="modal-footer">
       <div class="hstack gap-2 justify-content-end">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal" (click)="modal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+          (click)="modal.close('Close click')">Close</button>
         <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
       </div>
     </div>

@@ -4,7 +4,7 @@ export interface Ticket {
     createdOn: string;
     updatedOn: string;
     description: string;
-    ticketTypeId: string;
+    ticketType: string;
     contactName: string;
     contactNumber: string;
     contactHasWhatsapp: boolean;

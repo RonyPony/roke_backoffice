@@ -44,10 +44,10 @@ export class ListComponent implements OnInit {
 
     this.jobListForm = this.fb.group({
       description: ['', [Validators.required]],
-      ticketTypeId: ['', [Validators.required]],
+      ticketType: ['', [Validators.required]],
       contactName: ['', [Validators.required]],
       contactNumber: ['', [Validators.required]],
-      contactHasWhatsapp: [false, [Validators.required]]
+      // contactHasWhatsapp: [false, [Validators.required]]
     });
 
     this.getAll();
@@ -55,11 +55,11 @@ export class ListComponent implements OnInit {
 
   getAll() {
     this.service.GetAll()
-        .subscribe({
-          next: (data) => {
-            this.lists = data;
-          }
-        })
+      .subscribe({
+        next: (data) => {
+          this.lists = data;
+        }
+      })
   }
 
   /**
@@ -132,12 +132,12 @@ export class ListComponent implements OnInit {
   saveUser() {
     if (this.jobListForm.valid) {
       this.service.saveTicket(this.jobListForm.value)
-          .subscribe({
-            next: (data) => {
-              this.getAll();
-              this.modalService.hide();
-            }
-          })
+        .subscribe({
+          next: (data) => {
+            this.getAll();
+            this.modalService.hide();
+          }
+        })
     }
 
     setTimeout(() => {
