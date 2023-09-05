@@ -18,7 +18,7 @@ export const MENU: MenuItem[] = [
         //         link: '/dashboard',
         //         parentId: 2
         //     },
-          
+
         //     {
         //         id: 7,
         //         label: 'MENUITEMS.DASHBOARDS.LIST.JOBS',
@@ -47,7 +47,7 @@ export const MENU: MenuItem[] = [
     //     label: 'Asignar',
     //     icon: 'bx-chat',
     //     link: '/chat',
-        
+
     // },
     // {
     //     id: 12,
@@ -274,10 +274,23 @@ export const MENU: MenuItem[] = [
             //     link: '/tasks/kanban',
             //     parentId: 45
             // },
+            // {
+            //     id: 48,
+            //     label: 'MENUITEMS.TASKS.LIST.CREATETASK',
+            //     link: '/tasks/create',
+            //     parentId: 45
+            // }
+        ]
+    },
+    {
+        id: 45,
+        label: 'MENUITEMS.BRANCHES.TEXT',
+        icon: 'bx-task',
+        subItems: [
             {
-                id: 48,
-                label: 'MENUITEMS.TASKS.LIST.CREATETASK',
-                link: '/tasks/create',
+                id: 46,
+                label: 'MENUITEMS.BRANCHES.LIST',
+                link: '/branch/list',
                 parentId: 45
             }
         ]

@@ -42,6 +42,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
 
 import { FilemanagerComponent } from './filemanager/filemanager.component';
+import { BranchesModule } from './branches/branches.module';
 
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
@@ -62,6 +63,7 @@ import { FilemanagerComponent } from './filemanager/filemanager.component';
     ProjectsModule,
     UIModule,
     TasksModule,
+    BranchesModule,
     ContactsModule,
     BlogModule,
     UtilityModule,

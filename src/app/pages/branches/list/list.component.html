@@ -1,14 +1,14 @@
 <div class="container-fluid">
-  <app-page-title title="Lista de Tareas" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <app-page-title title="Lista de Sucursales"></app-page-title>
 
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body border-bottom">
           <div class="d-flex align-items-center">
-            <h5 class="mb-0 card-title flex-grow-1">Lista de Tareas</h5>
+            <h5 class="mb-0 card-title flex-grow-1">Lista de Sucursales</h5>
             <div class="flex-shrink-0 d-flex gap-1">
-              <a href="javascript:void(0);" class="btn btn-primary" (click)="openModal(content)">Crear Tareas</a>
+              <a href="javascript:void(0);" class="btn btn-primary" (click)="openModal(content)">Crear Sucursal</a>
             </div>
           </div>
         </div>
@@ -17,19 +17,19 @@
             <table class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
               <thead>
                 <tr>
-                  <th scope="col">Descripción</th>
-                  <th scope="col">Tipo de Ticket</th>
-                  <th scope="col">Nombre de Contacto</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Encargado</th>
                   <th scope="col">Numero de Contacto</th>
                   <th scope="col">Tiene Whatsapp?</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of lists">
-                  <td>{{data.description}}</td>
-                  <td>{{data.ticketType}}</td>
-                  <td>{{data.contactName}}</td>
-                  <td>{{data.contactNumber}}</td>
+                <tr *ngFor="let data of branches">
+                  <td>{{data.sucursal}}</td>
+                  <td>{{data.status}}</td>
+                  <td>Loading...</td>
+                  <td>Loading...</td>
                   <td>
                     <div class="form-check font-size-16">
                       <input disabled id="customCheck" type="checkbox" class="form-check-input"
@@ -50,32 +50,31 @@
 <!-- Order Create Model -->
 <ng-template #content role="document" let-modal>
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Crear Tarea</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
-      (click)="modalRef?.hide()"></button>
+    <h5 class="modal-title" id="exampleModalLabel">Crear Sucurrsal</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
   </div>
-  <form (ngSubmit)="saveUser()" [formGroup]="jobListForm">
+  <form [formGroup]="branchListForm">
     <div class="modal-body">
       <div class="mb-3">
-        <label for="customername-field" class="form-label">Descripción</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="description"
+        <label for="customername-field" class="form-label">Nombre</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="name"
           [ngClass]="{ 'is-invalid': submitted && form['title'].errors }" />
-        <div *ngIf="submitted && form['description'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['description'].errors['required']">Descripción es requerida</div>
+        <div *ngIf="submitted && form['name'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['name'].errors['required']">Nombre es requerid</div>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="payment-field" class="form-label">Tipo de Ticket</label>
-        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="ticketType"
+        <label for="payment-field" class="form-label">Estado</label>
+        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="status"
           [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
-          <option value="">Seleccione un Tipo</option>
-          <option value="mantenimiento">Mantenimiento</option>
-          <option value="instalacion">Instalación</option>
-          <option value="reparación">Reparación</option>
+          <option value="">Seleccione un estado</option>
+          <option value="mantenimiento">Activa</option>
+          <option value="instalacion">Inactiva</option>
+          <option value="reparación">Borrada</option>
         </select>
-        <div *ngIf="submitted && form['ticketType'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['ticketType'].errors['required']">Tipo es requerida</div>
+        <div *ngIf="submitted && form['status'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['status'].errors['required']">Tipo es requerida</div>
         </div>
       </div>
 

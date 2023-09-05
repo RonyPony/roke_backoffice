@@ -44,10 +44,10 @@ export class ListComponent implements OnInit {
 
     this.jobListForm = this.fb.group({
       description: ['', [Validators.required]],
-      ticketTypeId: ['', [Validators.required]],
+      ticketType: ['', [Validators.required]],
       contactName: ['', [Validators.required]],
       contactNumber: ['', [Validators.required]],
-      contactHasWhatsapp: [false, [Validators.required]]
+      // contactHasWhatsapp: [false, [Validators.required]]
     });
 
     this.getAll();
@@ -55,11 +55,11 @@ export class ListComponent implements OnInit {
 
   getAll() {
     this.service.GetAll()
-        .subscribe({
-          next: (data) => {
-            this.lists = data;
-          }
-        })
+      .subscribe({
+        next: (data) => {
+          this.lists = data;
+        }
+      })
   }
 
   /**
@@ -132,12 +132,12 @@ export class ListComponent implements OnInit {
   saveUser() {
     if (this.jobListForm.valid) {
       this.service.saveTicket(this.jobListForm.value)
-          .subscribe({
-            next: (data) => {
-              this.getAll();
-              this.modalService.hide();
-            }
-          })
+        .subscribe({
+          next: (data) => {
+            this.getAll();
+            this.modalService.hide();
+          }
+        })
     }
 
     setTimeout(() => {
@@ -146,28 +146,6 @@ export class ListComponent implements OnInit {
 
     this.submitted = true;
   }
-
-  /**
-   * Open Edit modal
-   * @param content modal content
-   */
-  // editDataGet(id: any, content: any) {
-  //   this.submitted = false;
-  //   this.modalRef = this.modalService.show(content, { class: 'modal-md' });
-  //   var modelTitle = document.querySelector('.modal-title') as HTMLAreaElement;
-  //   modelTitle.innerHTML = 'Edit Order';
-  //   var updateBtn = document.getElementById('add-btn') as HTMLAreaElement;
-  //   updateBtn.innerHTML = "Update";
-  //   var listData = this.lists.filter((data: { id: any; }) => data.id === id);
-  //   this.jobListForm.controls['title'].setValue(listData[0].title);
-  //   this.jobListForm.controls['name'].setValue(listData[0].name);
-  //   this.jobListForm.controls['location'].setValue(listData[0].location);
-  //   this.jobListForm.controls['experience'].setValue(listData[0].experience);
-  //   this.jobListForm.controls['position'].setValue(listData[0].position);
-  //   this.jobListForm.controls['type'].setValue(listData[0].type);
-  //   this.jobListForm.controls['status'].setValue(listData[0].status);
-  //   this.jobListForm.controls['ids'].setValue(listData[0].id);
-  // }
 
   pageChanged(event: any) {
     this.currentPage = event.page;
