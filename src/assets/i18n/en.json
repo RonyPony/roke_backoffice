@@ -181,6 +181,13 @@
       "UPDATE": "Update Branch",
       "LIST": "List Branches"
     },
+    "INVENTORY": {
+      "TEXT": "Inventory",
+      "CREATE": "Create",
+      "DELETE": "Delete",
+      "UPDATE": "Update",
+      "LIST": "List"
+    },
     "CONTACTS": {
       "TEXT": "Contacts",
       "LIST": {

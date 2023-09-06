@@ -295,6 +295,19 @@ export const MENU: MenuItem[] = [
             }
         ]
     },
+    {
+        id: 46,
+        label: 'MENUITEMS.INVENTORY.TEXT',
+        icon: 'bx-task',
+        subItems: [
+            {
+                id: 47,
+                label: 'MENUITEMS.INVENTORY.LIST',
+                link: '/inventory/list',
+                parentId: 46
+            }
+        ]
+    },
     // {
     //     id: 49,
     //     label: 'MENUITEMS.CONTACTS.TEXT',

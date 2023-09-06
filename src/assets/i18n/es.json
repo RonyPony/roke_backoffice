@@ -181,6 +181,13 @@
       "UPDATE": "Actualizar Sucursal",
       "LIST": "Ver Sucursales"
     },
+    "INVENTORY": {
+      "TEXT": "Inventario",
+      "CREATE": "Crear nueva",
+      "DELETE": "Borrar",
+      "UPDATE": "Actualizar",
+      "LIST": "Lista"
+    },
     "CONTACTS": {
       "TEXT": "Contactos",
       "LIST": {

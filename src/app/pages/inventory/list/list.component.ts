@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Branch } from './list.model';
-import { BranchService } from './branch.service';
+import { Inventory } from './list.model';
+import { InventoryService } from './inventory.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup } from '@angular/forms';
 
@@ -11,14 +11,14 @@ import { FormGroup } from '@angular/forms';
 })
 export class ListComponent {
   modalRef?: BsModalRef;
-  branchListForm!: FormGroup;
+  InventoryListForm!: FormGroup;
   submitted: boolean = false;
   isEditing: boolean = false;
   currentPage: any;
-  constructor(public service: BranchService, private modalService: BsModalService) {
+  constructor(public service: InventoryService, private modalService: BsModalService) {
 
   }
-  branches: Branch[];
+  Inventory: Inventory[];
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -39,15 +39,15 @@ export class ListComponent {
   * Form data get
   */
   get form() {
-    return this.branchListForm.controls;
+    return this.InventoryListForm.controls;
   }
 
   /**
   * Save user
   */
   saveUser() {
-    if (this.branchListForm.valid) {
-      this.service.saveBranch(this.branchListForm.value)
+    if (this.InventoryListForm.valid) {
+      this.service.saveInventory(this.InventoryListForm.value)
         .subscribe({
           next: (data) => {
             this.getAll();
@@ -57,7 +57,7 @@ export class ListComponent {
     }
 
     setTimeout(() => {
-      this.branchListForm.reset();
+      this.InventoryListForm.reset();
     }, 2000);
 
     this.submitted = true;
@@ -75,21 +75,14 @@ export class ListComponent {
   }
 
   setDataToEdit(index: number) {
-    this.branchListForm.get('id').setValue(this.branches[index].id);
-    this.branchListForm.get('sucursal').setValue(this.branches[index].sucursal);
-    this.branchListForm.get('contactHasWhatsapp').setValue(this.branches[index].contactHasWhatsapp);
-    this.branchListForm.get('contactName').setValue(this.branches[index].contactName);
-    this.branchListForm.get('contactNumber').setValue(this.branches[index].contactNumber);
-    this.branchListForm.get('latitude').setValue(this.branches[1].latitude);
-    this.branchListForm.get('longitude').setValue(this.branches[index].longitude);
-    this.branchListForm.get('status').setValue(this.branches[index].status);
+    this.InventoryListForm.get('id').setValue(this.Inventory[index].id);
   }
   getAll() {
-    console.log("getting branches");
+    console.log("getting Inventory");
     this.service.GetAll()
       .subscribe({
         next: (data) => {
-          this.branches = data;
+          this.Inventory = data;
         }
       })
   }

@@ -43,6 +43,7 @@ import { ChatComponent } from './chat/chat.component';
 
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { BranchesModule } from './branches/branches.module';
+import { InventoryModule } from './inventory/inventory.module';
 
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
@@ -64,6 +65,7 @@ import { BranchesModule } from './branches/branches.module';
     UIModule,
     TasksModule,
     BranchesModule,
+    InventoryModule,
     ContactsModule,
     BlogModule,
     UtilityModule,

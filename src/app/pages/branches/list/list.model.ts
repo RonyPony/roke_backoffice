@@ -4,7 +4,11 @@ export interface Branch {
     sucursal: string;
     latitude: string;
     longitude: string;
+    contactName: string;
+    contactNumber: string;
+    contactHasWhatsapp: boolean
 }
+
 
 export enum BranchStatus {
     Active,
