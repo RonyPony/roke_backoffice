@@ -166,6 +166,12 @@
         "CREATE": "Crear nueva"
       }
     },
+    "PLANNING": {
+      "TEXT": "Planificacion",
+      "LIST": {
+        "PLANNINGLIST": "Lista de Planificaciones"
+      }
+    },
     "TASKS": {
       "TEXT": "Tareas",
       "LIST": {
