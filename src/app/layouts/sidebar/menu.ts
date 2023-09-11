@@ -260,7 +260,7 @@ export const MENU: MenuItem[] = [
     {
         id: 43,
         label: 'MENUITEMS.PLANNING.TEXT',
-        icon: 'bx-task',
+        icon: 'bx bxs-timer',
         subItems: [
             {
                 id: 44,
@@ -298,7 +298,7 @@ export const MENU: MenuItem[] = [
     {
         id: 45,
         label: 'MENUITEMS.BRANCHES.TEXT',
-        icon: 'bx-task',
+        icon: 'bx bx-buildings',
         subItems: [
             {
                 id: 46,
@@ -311,7 +311,7 @@ export const MENU: MenuItem[] = [
     {
         id: 46,
         label: 'MENUITEMS.INVENTORY.TEXT',
-        icon: 'bx-task',
+        icon: 'bx bx-cube',
         subItems: [
             {
                 id: 47,
