@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Planning } from './list.model';
+import { Month, Planning } from './list.model';
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +9,10 @@ import { Planning } from './list.model';
 export class PlanningService {
 
     constructor(private http: HttpClient) { }
+
+    GetAllMonths() {
+        return this.http.get<Month[]>(`${environment.urlApi}/api/Month`);
+    }
 
     GetAll() {
         return this.http.get<Planning[]>(`${environment.urlApi}/api/Planning`);

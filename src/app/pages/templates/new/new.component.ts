@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Planning } from '../list/list.model';
-import { PlanningService } from './planning.service';
+import { Template } from '../list/list.model';
+import { TemplateService } from './template.service';
 import { Month } from './list.model';
 
 @Component({
@@ -11,11 +11,11 @@ import { Month } from './list.model';
 })
 export class NewComponent implements OnInit {
   modalRef?: BsModalRef;
-  constructor(private modalService: BsModalService, private planningService: PlanningService) {
+  constructor(private modalService: BsModalService, private TemplateService: TemplateService) {
 
   }
   months: Month[]
-  planificacion: Planning[]
+  planificacion: Template[]
 
   ngOnInit(): void {
     this.getAllMonths();
@@ -26,7 +26,7 @@ export class NewComponent implements OnInit {
   }
 
   getAllMonths() {
-    this.planningService.GetAllMonths()
+    this.TemplateService.GetAllMonths()
       .subscribe({
         next: (data) => {
           this.months = data;

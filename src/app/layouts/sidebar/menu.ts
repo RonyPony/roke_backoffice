@@ -267,6 +267,12 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.PLANNING.LIST.PLANNINGLIST',
                 link: '/planning/list',
                 parentId: 43
+            },
+            {
+                id: 45,
+                label: 'MENUITEMS.PLANNING.TEMPLATES.TEXT',
+                link: '/templates/list',
+                parentId: 43
             }
         ]
     },

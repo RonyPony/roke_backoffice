@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Planning } from './list.model';
+import { Template } from './list.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class PlanningService {
+export class TemplateService {
 
     constructor(private http: HttpClient) { }
 
     GetAll() {
-        return this.http.get<Planning[]>(`${environment.urlApi}/api/Planning`);
+        return this.http.get<Template[]>(`${environment.urlApi}/api/Template`);
     }
 
 
-    savePlanning(data: any) {
-        return this.http.post<Planning>(`${environment.urlApi}/api/Planning`, data);
+    saveTemplate(data: any) {
+        return this.http.post<Template>(`${environment.urlApi}/api/Template`, data);
     }
 }

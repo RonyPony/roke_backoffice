@@ -170,6 +170,10 @@
       "TEXT": "Planificacion",
       "LIST": {
         "PLANNINGLIST": "Lista de Planificaciones"
+      },
+      "TEMPLATES": {
+        "TEXT": "Plantillas",
+        "ADD": "Agregar"
       }
     },
     "TASKS": {

@@ -44,6 +44,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { BranchesModule } from './branches/branches.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { TemplateModule } from './templates/template.module';
 
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
@@ -64,6 +65,7 @@ import { InventoryModule } from './inventory/inventory.module';
     ProjectsModule,
     UIModule,
     TasksModule,
+    TemplateModule,
     BranchesModule,
     InventoryModule,
     ContactsModule,

@@ -37,7 +37,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Seleccionar plantilla</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
     </div>
-    <form [formGroup]="PlanningListForm">
+    <form [formGroup]="TemplateListForm">
         <div *ngFor="let item of months">
             <div>
                 Planificacion {{item.index}}

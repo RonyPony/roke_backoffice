@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'invoices', loadChildren: () => import('./invoices/invoices.module').then(m => m.InvoicesModule) },
   { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
   { path: 'planning', loadChildren: () => import('./planning/planning.module').then(m => m.PlanningModule) },
+  { path: 'templates', loadChildren: () => import('./templates/template.module').then(m => m.TemplateModule) },
   { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
   { path: 'branch', loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule) },
   { path: 'inventory', loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule) },
