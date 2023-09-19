@@ -63,65 +63,64 @@
 <!-- Order Create Model -->
 <ng-template #content role="document" let-modal>
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Crear Sucurrsal</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+    <h5 class="modal-title" id="exampleModalLabel">Crear Trabajador</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+      (click)="modalRef?.hide()"></button>
   </div>
-  <form [formGroup]="branchListForm">
+  <form (ngSubmit)="saveUser()" [formGroup]="userForm">
     <div class="modal-body">
       <div class="mb-3">
-        <label for="customername-field" class="form-label">Sucursal</label>
+        <label for="customername-field" class="form-label">sucursal</label>
         <input type="text" id="customername-field" class="form-control" required formControlName="sucursal"
-          [ngClass]="{ 'is-invalid': submitted && form['title'].errors }" />
+          [ngClass]="{ 'is-invalid': submitted && form['sucursal'].errors }" />
         <div *ngIf="submitted && form['sucursal'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['sucursal'].errors['required']">Nombre es requerid</div>
+          <div *ngIf="form['sucursal'].errors['required']">sucursal es requerido</div>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="payment-field" class="form-label">Estado</label>
-        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="status"
-          [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
-          <option value="">Seleccione un estado</option>
-          <option value="mantenimiento">Activa</option>
-          <option value="instalacion">Inactiva</option>
-          <option value="reparación">Borrada</option>
-        </select>
-        <div *ngIf="submitted && form['status'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['status'].errors['required']">Tipo es requerida</div>
+        <label for="customername-field" class="form-label">longitude</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="longitude"
+          [ngClass]="{ 'is-invalid': submitted && form['longitude'].errors }" />
+        <div *ngIf="submitted && form['longitude'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['longitude'].errors['required']">longitude es requerido</div>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="customername-field" class="form-label">Nombre de Contacto</label>
+        <label for="customername-field" class="form-label">longitude</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="longitude"
+          [ngClass]="{ 'is-invalid': submitted && form['longitude'].errors }" />
+        <div *ngIf="submitted && form['longitude'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['longitude'].errors['required']">Nombre de longitude es requerida</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="customername-field" class="form-label">contactName</label>
         <input type="text" id="customername-field" class="form-control" required formControlName="contactName"
           [ngClass]="{ 'is-invalid': submitted && form['contactName'].errors }" />
         <div *ngIf="submitted && form['contactName'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['contactName'].errors['required']">Nombre de Contacto es requerida</div>
+          <div *ngIf="form['contactName'].errors['required']">contactName es requerida</div>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="customername-field" class="form-label">Numero de Contacto</label>
+        <label for="customername-field" class="form-label">contactNumber</label>
         <input type="text" id="customername-field" class="form-control" required formControlName="contactNumber"
           [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
         <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
+          <div *ngIf="form['contactNumber'].errors['required']">contactNumber es requerida</div>
         </div>
       </div>
 
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="remember-check" formControlName="contactHasWhatsapp">
-          <label class="form-check-label" for="remember-check">
-            Tiene Whatsapp?
-          </label>
-        </div>
-      </div>
+
+
+
     </div>
     <div class="modal-footer">
       <div class="hstack gap-2 justify-content-end">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
-          (click)="modal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal" (click)="modalRef?.hide()">Close</button>
         <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
       </div>
     </div>

@@ -14,6 +14,10 @@ export class PlanningService {
         return this.http.get<Month[]>(`${environment.urlApi}/api/Month`);
     }
 
+    GetAllPlannings() {
+        return this.http.get<Planning[]>(`${environment.urlApi}/api/template`);
+    }
+
     GetAll() {
         return this.http.get<Planning[]>(`${environment.urlApi}/api/Planning`);
     }

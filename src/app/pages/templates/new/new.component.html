@@ -1,30 +1,36 @@
 <div class="container-fluid">
-    <app-page-title title="Nueva Planificacion"></app-page-title>
+    <app-page-title title="Nueva Plantilla de Sucursales"></app-page-title>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">Seleccion de Plantilla</h5>
+                        <h5 class="mb-0 card-title flex-grow-1">Complete la informacion solicitada</h5>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="months" *ngFor="let item of months">
-                        <div class="col amonth">
-                            <div class="d-flex flex-row">
-
-                                <div class="p-2">{{formatString(item.month)}}</div>
-
-                            </div>
-
-                            <button (click)="openModal(content)" class="btn btn-primary loadTemplateBtn"><i
-                                    class="bx bxs-file-plus"></i> Seleccionar
-                                Plantilla</button>
+                <form (ngSubmit)="saveTemplate()" [formGroup]="templateForm" class="templateForm">
+                    <div class="form-group">
+                        <label for="customername-field" class="form-label">Nombre</label>
+                        <input type="text" id="customername-field" class="form-control" required
+                            formControlName="sucursal"
+                            [ngClass]="{ 'is-invalid': submitted && form['sucursal'].errors }" />
+                        <div *ngIf="submitted && form['sucursal'].errors" class="invalid-feedback" align="left">
+                            <div *ngIf="form['sucursal'].errors['required']">Nombre es requerido</div>
                         </div>
 
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Sucursales</label>
+                        <select multiple class="form-control multipleSelection" id="exampleFormControlSelect2">
+                            <option *ngIf="searchingLocations">CONSULTANDO SUCURSALES...</option>
+                            <option *ngFor="let item of locations">{{item.sucursal}}</option>
+                        </select>
+                        <small id="emailHelp" class="form-text text-muted">Use la tecla SHIFT para seleccionar varios
+                            elementos.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Plantilla</button>
+                </form>
             </div>
         </div>
     </div>

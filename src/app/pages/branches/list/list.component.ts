@@ -46,6 +46,8 @@ export class ListComponent {
   * Save user
   */
   saveUser() {
+
+    console.log("xxx")
     if (this.branchListForm.valid) {
       this.service.saveBranch(this.branchListForm.value)
         .subscribe({

@@ -15,6 +15,7 @@ export class BranchService {
   }
 
   saveBranch(data: any) {
+
     return this.http.post<Branch>(`${environment.urlApi}/api/location`, data);
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Month, Template } from './list.model';
+import { LocationRoke, Month, Template } from './new.model';
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,9 @@ export class TemplateService {
 
     GetAllMonths() {
         return this.http.get<Month[]>(`${environment.urlApi}/api/Month`);
+    }
+    GetAllLocations() {
+        return this.http.get<LocationRoke[]>(`${environment.urlApi}/api/Location`);
     }
 
     GetAll() {

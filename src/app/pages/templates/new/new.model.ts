@@ -10,6 +10,17 @@ export interface Template {
     contactHasWhatsapp: boolean;
 }
 
+export interface LocationRoke {
+    id: string;
+    sucursal: string;
+    latitude: string;
+    longitude: string;
+    status: string;
+    contactName: string;
+    contactNumber: string;
+    contactHasWhatsapp: boolean;
+}
+
 export interface Month {
     id: string;
     month: TemplateStatus;
