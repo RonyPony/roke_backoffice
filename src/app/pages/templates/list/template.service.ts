@@ -11,7 +11,7 @@ export class TemplateService {
     constructor(private http: HttpClient) { }
 
     GetAll() {
-        return this.http.get<Template[]>(`${environment.urlApi}/api/Template`);
+        return this.http.get<Template[]>(`${environment.urlApi}/api/template`);
     }
 
 

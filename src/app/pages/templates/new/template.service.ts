@@ -21,6 +21,13 @@ export class TemplateService {
         return this.http.get<Template[]>(`${environment.urlApi}/api/Template`);
     }
 
+    linkLocationToTemplate(templateId: string, locationIds: any) {
+        var data = {
+            "templateId": templateId,
+            "locationId": locationIds
+        }
+        return this.http.post<Template>(`${environment.urlApi}/api/template/asign`, data);
+    }
 
     saveTemplate(data: any) {
         return this.http.post<Template>(`${environment.urlApi}/api/Template`, data);

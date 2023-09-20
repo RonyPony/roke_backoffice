@@ -31,9 +31,9 @@ export class NewComponent implements OnInit {
 
   loadForm() {
     this.templateForm = this.fb.group({
-      id: [0],
-      sucursal: ['', [Validators.required]],
-      status: ['Active', [Validators.required]]
+      name: ['', [Validators.required]],
+      branches: ['']
+      // status: ['Active', [Validators.required]]
     });
   }
 
@@ -49,14 +49,26 @@ export class NewComponent implements OnInit {
     return this.templateForm.controls;
   }
 
+  asignBranches(data: any, tmplId: any) {
+    console.log("linking banches to the new template ", data.branches)
+    this.TemplateService.linkLocationToTemplate(tmplId, data.branches)
+      .subscribe({
+        next: (data) => {
+          console.log("success ", data)
+        }
+      });
+  }
+
   saveTemplate() {
     console.log("saving template ...")
     if (this.templateForm.valid) {
+      console.log(this.templateForm.value)
       if (!this.isEditing) {
         this.TemplateService.saveTemplate(this.templateForm.value)
           .subscribe({
             next: (data) => {
-              console.log("success")
+              console.log("success ", data)
+              this.asignBranches(this.templateForm.value, data.id)
             }
           });
       } else {

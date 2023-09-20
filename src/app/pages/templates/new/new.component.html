@@ -1,5 +1,8 @@
 <div class="container-fluid">
-    <app-page-title title="Nueva Plantilla de Sucursales"></app-page-title>
+
+    <app-page-title title="Nueva Plantilla de Sucursales">
+
+    </app-page-title>
 
     <div class="row">
         <div class="col-12">
@@ -12,19 +15,19 @@
                 <form (ngSubmit)="saveTemplate()" [formGroup]="templateForm" class="templateForm">
                     <div class="form-group">
                         <label for="customername-field" class="form-label">Nombre</label>
-                        <input type="text" id="customername-field" class="form-control" required
-                            formControlName="sucursal"
-                            [ngClass]="{ 'is-invalid': submitted && form['sucursal'].errors }" />
-                        <div *ngIf="submitted && form['sucursal'].errors" class="invalid-feedback" align="left">
-                            <div *ngIf="form['sucursal'].errors['required']">Nombre es requerido</div>
+                        <input type="text" id="customername-field" class="form-control" required formControlName="name"
+                            [ngClass]="{ 'is-invalid': submitted && form['name'].errors }" />
+                        <div *ngIf="submitted && form['name'].errors" class="invalid-feedback" align="left">
+                            <div *ngIf="form['name'].errors['required']">Nombre es requerido</div>
                         </div>
 
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Sucursales</label>
-                        <select multiple class="form-control multipleSelection" id="exampleFormControlSelect2">
+                        <select formControlName="branches" multiple class="form-control multipleSelection"
+                            id="exampleFormControlSelect2">
                             <option *ngIf="searchingLocations">CONSULTANDO SUCURSALES...</option>
-                            <option *ngFor="let item of locations">{{item.sucursal}}</option>
+                            <option value={{item.id}} *ngFor="let item of locations">{{item.sucursal}}</option>
                         </select>
                         <small id="emailHelp" class="form-text text-muted">Use la tecla SHIFT para seleccionar varios
                             elementos.</small>
@@ -35,20 +38,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- Order Create Model -->
-<ng-template #content role="document" let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Seleccionar plantilla</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-    </div>
-    <form [formGroup]="TemplateListForm">
-        <div *ngFor="let item of months">
-            <div>
-                Planificacion {{item.index}}
-            </div>
-        </div>
-    </form>
-</ng-template>
-<!--End Modal -->
