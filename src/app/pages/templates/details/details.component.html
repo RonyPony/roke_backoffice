@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+    <app-page-title title="Detalles de Plantilla de Sucursales">
+
+    </app-page-title>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body border-bottom">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mb-0 card-title flex-grow-1">Detalles de Plantilla de Sucursales</h5>
+                    </div>
+                </div>
+                <form (ngSubmit)="saveTemplate()" [formGroup]="templateForm" class="templateForm">
+                    <div class="form-group">
+                        <label for="customername-field" class="form-label">Nombre</label>
+                        <input type="text" value="Template.name" id="customername-field" class="form-control" required
+                            formControlName="name" [ngClass]="{ 'is-invalid': form['name'].errors }" />
+                        <div *ngIf=" form['name'].errors" class="invalid-feedback" align="left">
+                            <div *ngIf="form['name'].errors['required']">Nombre es requerido</div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Sucursales</label>
+                        <select formControlName="branches" multiple class="form-control multipleSelection"
+                            id="exampleFormControlSelect2">
+                            <option value={{item.id}} *ngFor="let item of locations">{{item.sucursal}}</option>
+                        </select>
+                        <small id="emailHelp" class="form-text text-muted">Use la tecla SHIFT para seleccionar varios
+                            elementos.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Plantilla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

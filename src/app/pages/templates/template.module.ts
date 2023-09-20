@@ -11,13 +11,15 @@ import { DndModule } from 'ngx-drag-drop';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TemplateRoutingModule } from './template-routing.module';
 import { NewComponent } from './new/new.component';
+import { DetailsComponent } from './details/details.component';
 
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    NewComponent
+    NewComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,

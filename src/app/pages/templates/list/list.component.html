@@ -39,8 +39,9 @@
                           (click)="editDataGet(content, i)"><i class="mdi mdi-pencil-outline"></i></a>
                       </li>
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="details">
-                        <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-primary"
-                          (click)="deleteUser(i)"><i class="mdi mdi-eye-outline"></i></a>
+                        <a href="javascript:void(0);" [routerLink]="['/templates/details',data.id]"
+                          data-bs-toggle="modal" class="btn btn-sm btn-soft-primary" (click)="deleteUser(i)"><i
+                            class="mdi mdi-eye-outline"></i></a>
                       </li>
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                         <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"
