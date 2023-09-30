@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Planning } from '../list/list.model';
+import { Planning } from '../new/list.model';
 import { PlanningService } from './planning.service';
 import { Month } from './list.model';
 
@@ -19,6 +19,7 @@ export class NewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllMonths();
+    this.getAllPlanning();
   }
 
   formatString(s: String) {
@@ -33,6 +34,14 @@ export class NewComponent implements OnInit {
         }
       })
   }
+  getAllPlanning() {
+    this.planningService.GetAllPlannings()
+      .subscribe({
+        next: (data) => {
+          this.planificacion = data;
+        }
+      })
+  }
 
   /**
  * Open modal
@@ -41,6 +50,7 @@ export class NewComponent implements OnInit {
   openModal(content: any) {
     // this.submitted = false;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
+    console.log(this.modalRef)
   }
 
 }

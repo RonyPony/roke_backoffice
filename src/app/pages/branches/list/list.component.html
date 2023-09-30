@@ -42,7 +42,7 @@
                     <ul class="list-unstyled hstack gap-1 mb-0">
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                         <a href="javascript:void(0);" class="btn btn-sm btn-soft-info"
-                          (click)="editDataGet(content, i)"><i class="mdi mdi-pencil-outline"></i></a>
+                          (click)="editDataGet(content, data.id)"><i class="mdi mdi-pencil-outline"></i></a>
                       </li>
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                         <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"
@@ -67,7 +67,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
       (click)="modalRef?.hide()"></button>
   </div>
-  <form (ngSubmit)="saveUser()" [formGroup]="userForm">
+  <form (ngSubmit)="saveUser()" [formGroup]="templateForm">
     <div class="modal-body">
       <div class="mb-3">
         <label for="customername-field" class="form-label">sucursal</label>
@@ -88,16 +88,16 @@
       </div>
 
       <div class="mb-3">
-        <label for="customername-field" class="form-label">longitude</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="longitude"
-          [ngClass]="{ 'is-invalid': submitted && form['longitude'].errors }" />
-        <div *ngIf="submitted && form['longitude'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['longitude'].errors['required']">Nombre de longitude es requerida</div>
+        <label for="customername-field" class="form-label">latitude</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="latitude"
+          [ngClass]="{ 'is-invalid': submitted && form['latitude'].errors }" />
+        <div *ngIf="submitted && form['latitude'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['latitude'].errors['required']">Nombre de latitude es requerida</div>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="customername-field" class="form-label">contactName</label>
+        <label for="customername-field" class="form-label">Nombre de encargado</label>
         <input type="text" id="customername-field" class="form-control" required formControlName="contactName"
           [ngClass]="{ 'is-invalid': submitted && form['contactName'].errors }" />
         <div *ngIf="submitted && form['contactName'].errors" class="invalid-feedback" align="left">
@@ -106,7 +106,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="customername-field" class="form-label">contactNumber</label>
+        <label for="customername-field" class="form-label">Numero de contacto</label>
         <input type="text" id="customername-field" class="form-control" required formControlName="contactNumber"
           [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
         <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">

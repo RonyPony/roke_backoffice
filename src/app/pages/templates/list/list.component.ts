@@ -74,6 +74,32 @@ export class ListComponent {
     this.setDataToEdit(index);
   }
 
+  getStatusLabel(statusId: number) {
+    switch (statusId) {
+      case 0:
+        return 'Activa'
+        break;
+      case 1:
+        return 'Desactivada'
+      case 2:
+        return 'Borrada'
+      default:
+        return 'Desconocido'
+        break;
+    }
+  }
+
+  deleteTemplate(x: any) {
+    console.log("deleting template ", x)
+    debugger
+    this.service.delete(x)
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+        }
+      })
+  }
+
   setDataToEdit(index: number) {
     this.TemplateListForm.get('id').setValue(this.Template[index].id);
   }

@@ -1,13 +1,9 @@
 export interface Planning {
     id: string;
     status: PlanningStatus;
-    createdOn: string;
-    updatedOn: string;
-    description: string;
-    PlanningType: string;
-    contactName: string;
-    contactNumber: string;
-    contactHasWhatsapp: boolean;
+    name: string,
+    createOn: string,
+    lastUpdate: string
 }
 
 export interface Month {

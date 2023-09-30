@@ -24,7 +24,7 @@ export class DetailsComponent {
   locations: LocationRoke[]
   id: string;
   template: Template;
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.getTemplateInfo();
     this.loadForm();
   }
@@ -32,10 +32,8 @@ export class DetailsComponent {
   getTemplateInfo() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.TemplateService.GetById(this.id).subscribe({ next: (data) => { this.template = data; } })
+      this.TemplateService.GetById(this.id).subscribe({ next: (data) => { this.template = data; console.log(this.template) } })
     });
-
-    console.log(this.id, this.template)
   }
 
   loadForm() {

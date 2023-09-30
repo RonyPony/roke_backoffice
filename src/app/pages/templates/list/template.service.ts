@@ -14,6 +14,10 @@ export class TemplateService {
         return this.http.get<Template[]>(`${environment.urlApi}/api/template`);
     }
 
+    delete(id: string) {
+        return this.http.delete<string[]>(`${environment.urlApi}/api/template/` + id);
+    }
+
 
     saveTemplate(data: any) {
         return this.http.post<Template>(`${environment.urlApi}/api/Template`, data);

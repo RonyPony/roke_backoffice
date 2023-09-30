@@ -15,7 +15,7 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <h1 *ngIf="!Template">Sin Plantillas</h1>
+            <h1 *ngIf="!Template">CARGANDO PLANTILLAS...</h1>
             <table *ngIf="Template" class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
               <thead>
                 <tr>
@@ -28,7 +28,7 @@
               <tbody>
                 <tr *ngFor="let data of Template">
                   <td>{{data.name}}</td>
-                  <td>{{data.status}}</td>
+                  <td>{{getStatusLabel(data.status)}}</td>
                   <td>{{data.createOn}}</td>
                   <td>{{data.lastUpdate}}</td>
 
@@ -45,7 +45,7 @@
                       </li>
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                         <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"
-                          (click)="deleteUser(i)"><i class="mdi mdi-delete-outline"></i></a>
+                          (click)="deleteTemplate(data.id)"><i class="mdi mdi-delete-outline"></i></a>
                       </li>
                     </ul>
                   </td>

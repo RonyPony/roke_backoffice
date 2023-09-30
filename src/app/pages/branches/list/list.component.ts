@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Branch } from './list.model';
 import { BranchService } from './branch.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -11,11 +11,11 @@ import { FormGroup } from '@angular/forms';
 })
 export class ListComponent {
   modalRef?: BsModalRef;
-  branchListForm!: FormGroup;
   submitted: boolean = false;
+  templateForm!: FormGroup;
   isEditing: boolean = false;
   currentPage: any;
-  constructor(public service: BranchService, private modalService: BsModalService) {
+  constructor(public service: BranchService, private modalService: BsModalService, private formBuilder: UntypedFormBuilder) {
 
   }
   branches: Branch[];
@@ -23,14 +23,26 @@ export class ListComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+    this.loadForm();
     this.getAll();
+
   }
 
-  openViewModal(content: any) {
-    this.modalRef = this.modalService.show(content);
+  loadForm() {
+    this.templateForm = this.formBuilder.group({
+      id: '',
+      sucursal: ['', [Validators.required]],
+      longitude: ['', [Validators.required]],
+      latitude: ['', [Validators.required]],
+      contactName: ['', [Validators.required]],
+      status: '0',
+      contactNumber: ['', [Validators.required]]
+    });
   }
 
   openModal(content: any) {
+    this.templateForm.reset();
+    this.loadForm();
     this.submitted = false;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
   }
@@ -39,7 +51,7 @@ export class ListComponent {
   * Form data get
   */
   get form() {
-    return this.branchListForm.controls;
+    return this.templateForm.controls;
   }
 
   /**
@@ -47,20 +59,22 @@ export class ListComponent {
   */
   saveUser() {
 
-    console.log("xxx")
-    if (this.branchListForm.valid) {
-      this.service.saveBranch(this.branchListForm.value)
+    console.log(this.templateForm)
+
+    if (this.templateForm.valid) {
+      this.service.saveBranch(this.templateForm.value)
         .subscribe({
           next: (data) => {
+            console.log(data)
             this.getAll();
             this.modalService.hide();
           }
         })
     }
 
-    setTimeout(() => {
-      this.branchListForm.reset();
-    }, 2000);
+    // setTimeout(() => {
+    //   this.templateForm.reset();
+    // }, 2000);
 
     this.submitted = true;
   }
@@ -69,22 +83,24 @@ export class ListComponent {
     this.currentPage = event.page;
   }
 
-  editDataGet(content: any, index: number) {
+  editDataGet(content: any, index: any) {
+    console.log(index)
     this.submitted = false;
     this.isEditing = true;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
     this.setDataToEdit(index);
   }
 
-  setDataToEdit(index: number) {
-    this.branchListForm.get('id').setValue(this.branches[index].id);
-    this.branchListForm.get('sucursal').setValue(this.branches[index].sucursal);
-    this.branchListForm.get('contactHasWhatsapp').setValue(this.branches[index].contactHasWhatsapp);
-    this.branchListForm.get('contactName').setValue(this.branches[index].contactName);
-    this.branchListForm.get('contactNumber').setValue(this.branches[index].contactNumber);
-    this.branchListForm.get('latitude').setValue(this.branches[1].latitude);
-    this.branchListForm.get('longitude').setValue(this.branches[index].longitude);
-    this.branchListForm.get('status').setValue(this.branches[index].status);
+  setDataToEdit(index: any) {
+    var branch = this.branches.find((e) => e.id === index)
+    this.templateForm.get('id').setValue(branch.id);
+    this.templateForm.get('sucursal').setValue(branch.sucursal);
+    this.templateForm.get('longitude').setValue(branch.longitude);
+    this.templateForm.get('contactName').setValue(branch.contactName);
+    this.templateForm.get('contactNumber').setValue(branch.contactNumber);
+    this.templateForm.get('latitude').setValue(branch.latitude);
+    this.templateForm.get('longitude').setValue(branch.longitude);
+    this.templateForm.get('status').setValue(branch.status);
   }
   getAll() {
     console.log("getting branches");

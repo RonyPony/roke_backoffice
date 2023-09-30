@@ -37,12 +37,13 @@
         <h5 class="modal-title" id="exampleModalLabel">Seleccionar plantilla</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
     </div>
-    <form [formGroup]="PlanningListForm">
-        <div *ngFor="let item of months">
-            <div>
-                Planificacion {{item.index}}
-            </div>
-        </div>
+    <form class="form2" [formGroup]="PlanningListForm">
+
+        <select class="form-select" size="3" aria-label="size 3 select example">
+            <option selected>Ninguno</option>
+            <option *ngFor="let item of planificacion" value="{{item.id}}">{{item.name}}</option>
+        </select>
+        <button class="btn btn-primary r540">Seleccionar</button>
     </form>
 </ng-template>
 <!--End Modal -->

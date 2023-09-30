@@ -14,20 +14,19 @@
                 </div>
                 <form (ngSubmit)="saveTemplate()" [formGroup]="templateForm" class="templateForm">
                     <div class="form-group">
-                        <label for="customername-field" class="form-label">Nombre</label>
-                        <input type="text" value="Template.name" id="customername-field" class="form-control" required
-                            formControlName="name" [ngClass]="{ 'is-invalid': form['name'].errors }" />
-                        <div *ngIf=" form['name'].errors" class="invalid-feedback" align="left">
-                            <div *ngIf="form['name'].errors['required']">Nombre es requerido</div>
-                        </div>
-
+                        <label for="customername-field" class="form-label">Nombre: </label>
+                        <hr>
+                        <strong>{{template.name}}</strong>
+                        <!-- <input type="text" placeholder="{{template.name}}" id="customername-field"
+                            class="form-control" /> -->
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Sucursales</label>
-                        <select formControlName="branches" multiple class="form-control multipleSelection"
+                        <strong *ngFor="let item of locations">{{item.sucursal}}</strong>
+                        <!-- <select formControlName="branches" multiple class="form-control multipleSelection"
                             id="exampleFormControlSelect2">
-                            <option value={{item.id}} *ngFor="let item of locations">{{item.sucursal}}</option>
-                        </select>
+                            <option *ngFor="let item of locations" value={{item.id}}>{{item.sucursal}}</option>
+                        </select> -->
                         <small id="emailHelp" class="form-text text-muted">Use la tecla SHIFT para seleccionar varios
                             elementos.</small>
                     </div>
