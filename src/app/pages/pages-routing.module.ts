@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'templates', loadChildren: () => import('./templates/template.module').then(m => m.TemplateModule) },
   { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
   { path: 'branch', loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule) },
+  { path: 'brigade', loadChildren: () => import('./brigade/brigade.module').then(m => m.BrigadeModule) },
   { path: 'inventory', loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule) },
   { path: 'contacts', loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule) },
   { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },

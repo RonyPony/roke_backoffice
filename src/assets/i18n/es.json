@@ -70,7 +70,7 @@
       "TEXT": "Menú"
     },
     "DASHBOARDS": {
-      "TEXT": "Tableros",
+      "TEXT": "Tablero",
       "BADGE": "04",
       "LIST": {
         "DEFAULT": "Defecto",
@@ -190,6 +190,13 @@
       "DELETE": "Borrar Sucursal",
       "UPDATE": "Actualizar Sucursal",
       "LIST": "Ver Sucursales"
+    },
+    "BRIGADE": {
+      "TEXT": "Brigadas",
+      "CREATE": "Crear Brigada",
+      "DELETE": "Borrar Brigada",
+      "UPDATE": "Actualizar Brigada",
+      "LIST": "Lista Brigada"
     },
     "INVENTORY": {
       "TEXT": "Inventario",

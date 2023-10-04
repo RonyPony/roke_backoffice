@@ -70,7 +70,7 @@
       "TEXT": "Menu"
     },
     "DASHBOARDS": {
-      "TEXT": "Dashboards",
+      "TEXT": "Dashboard",
       "BADGE": "04",
       "LIST": {
         "DEFAULT": "Default",
@@ -186,6 +186,13 @@
       "DELETE": "Delete Branch",
       "UPDATE": "Update Branch",
       "LIST": "List Branches"
+    },
+    "BRIGADE": {
+      "TEXT": "Brigades",
+      "CREATE": "Create Brigade",
+      "DELETE": "Delete Brigade",
+      "UPDATE": "Update Brigade",
+      "LIST": "List Brigades"
     },
     "INVENTORY": {
       "TEXT": "Inventory",

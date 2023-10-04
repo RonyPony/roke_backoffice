@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <app-page-title title="Lista de brigadas"></app-page-title>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body border-bottom">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mb-0 card-title flex-grow-1">Lista de Brigadas</h5>
+                        <div class="flex-shrink-0 d-flex gap-1">
+                            <a href="javascript:void(0);" class="btn btn-primary" (click)="openModal(content)">Crear
+                                Brigada</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Fecha de Creacion</th>
+                                    <th scope="col">Ultima Actualizacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of brigade">
+                                    <td>{{data.name}}</td>
+                                    <td>{{getStatusLabel(data.status)}}</td>
+                                    <td>{{data.createOn}}</td>
+                                    <td>{{data.lastUpdate}}</td>
+                                    <td>
+                                        <ul class="list-unstyled hstack gap-1 mb-0">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-soft-info"
+                                                    (click)="editDataGet(content, data.id)"><i
+                                                        class="mdi mdi-pencil-outline"></i></a>
+                                            </li>
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                <a href="javascript:void(0);" data-bs-toggle="modal"
+                                                    class="btn btn-sm btn-soft-danger"
+                                                    (click)="deleteBrigade(data.id)"><i
+                                                        class="mdi mdi-delete-outline"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Create Model -->
+<ng-template #content role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Brigada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modalRef?.hide()"></button>
+    </div>
+    <form (ngSubmit)="saveBrigades()" [formGroup]="brigadeForm">
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="customername-field" class="form-label">Nombre de la brigada</label>
+                <input type="text" id="customername-field" class="form-control" required formControlName="name"
+                    [ngClass]="{ 'is-invalid': submitted && form['name'].errors }" />
+                <div *ngIf="submitted && form['name'].errors" class="invalid-feedback" align="left">
+                    <div *ngIf="form['name'].errors['required']">Nombre de la brigada es requerido</div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="hstack gap-2 justify-content-end">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                    (click)="modalRef?.hide()">Close</button>
+                <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+<!--End Modal -->

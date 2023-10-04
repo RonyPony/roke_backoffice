@@ -45,6 +45,7 @@ import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { BranchesModule } from './branches/branches.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { TemplateModule } from './templates/template.module';
+import { BrigadeModule } from './brigade/brigade.module';
 
 @NgModule({
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
@@ -57,6 +58,7 @@ import { TemplateModule } from './templates/template.module';
     NgApexchartsModule,
     ReactiveFormsModule,
     DashboardsModule,
+    BrigadeModule,
     CryptoModule,
     EcommerceModule,
     EmailModule,
