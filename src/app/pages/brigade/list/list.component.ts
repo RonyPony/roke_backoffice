@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BrigadeService } from '../brigade.service';
-import { Brigade } from './list.model';
+import { Brigade, BrigadeUser } from './list.model';
 
 @Component({
   selector: 'app-list',
@@ -13,6 +13,7 @@ export class ListComponent {
   modalRef?: BsModalRef;
   submitted: boolean = false;
   brigadeForm!: FormGroup;
+  technichian: BrigadeUser[];
   isEditing: boolean = false;
   currentPage: any;
   constructor(public service: BrigadeService, private modalService: BsModalService, private formBuilder: UntypedFormBuilder) {
@@ -54,17 +55,30 @@ export class ListComponent {
   */
   saveBrigades() {
 
-    console.log(this.brigadeForm)
+
 
     if (this.brigadeForm.valid) {
-      this.service.saveBrigade(this.brigadeForm.value)
-        .subscribe({
-          next: (data) => {
-            console.log(data)
-            this.getAll();
-            this.modalService.hide();
-          }
-        })
+      if (this.isEditing) {
+        console.log("updating... ", this.brigadeForm.controls.id.value)
+        this.service.updateBrigade(this.brigadeForm.value, this.brigadeForm.controls.id.value)
+          .subscribe({
+            next: (data) => {
+              console.log(data)
+              this.getAll();
+              this.modalService.hide();
+            }
+          })
+      } else {
+        console.log("saving... ", this.brigadeForm.controls.id.value)
+        this.service.saveBrigade(this.brigadeForm.value)
+          .subscribe({
+            next: (data) => {
+              console.log(data)
+              this.getAll();
+              this.modalService.hide();
+            }
+          })
+      }
     }
 
     // setTimeout(() => {
@@ -108,7 +122,6 @@ export class ListComponent {
   }
 
   editDataGet(content: any, index: any) {
-    console.log(index)
     this.submitted = false;
     this.isEditing = true;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });

@@ -72,7 +72,16 @@
                     <div *ngIf="form['name'].errors['required']">Nombre de la brigada es requerido</div>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Tecnicos Asociados</label>
+                <select formControlName="brigades" multiple class="form-control multipleSelection"
+                    id="exampleFormControlSelect2">
+                    <option *ngIf="searchingUsers">CONSULTANDO TECNICOS...</option>
+                    <option value={{item.id}} *ngFor="let item of technichian">{{item.name}}</option>
+                </select>
+                <small id="emailHelp" class="form-text text-muted">Use la tecla SHIFT para seleccionar varios
+                    elementos.</small>
+            </div>
 
 
 
@@ -81,7 +90,8 @@
             <div class="hstack gap-2 justify-content-end">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal"
                     (click)="modalRef?.hide()">Close</button>
-                <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
+                <button *ngIf="isEditing" type="submit" class="btn btn-success" id="update-btn">Actualizar</button>
+                <button *ngIf="!isEditing" type="submit" class="btn btn-success" id="add-btn">Guardar</button>
             </div>
         </div>
     </form>
