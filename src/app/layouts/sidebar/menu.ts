@@ -314,6 +314,7 @@ export const MENU: MenuItem[] = [
             }
         ]
     },
+
     {
         id: 46,
         label: 'MENUITEMS.INVENTORY.TEXT',
@@ -437,6 +438,19 @@ export const MENU: MenuItem[] = [
             // }
         ]
     },
+    {
+        id: 58,
+        label: 'MENUITEMS.BRIGADE.TEXT',
+        icon: 'bx-briefcase-alt',
+        subItems: [
+            {
+                id: 58,
+                label: 'MENUITEMS.BRIGADE.LIST',
+                link: '/brigade/list',
+                parentId: 57
+            },
+        ]
+    }
     // {
     //     id: 66,
     //     label: 'MENUITEMS.PAGES.TEXT',
