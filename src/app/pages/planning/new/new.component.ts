@@ -60,9 +60,9 @@ export class NewComponent implements OnInit {
       })
   }
 
-  savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any,finalDate: any ) {
+  savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any,finalDate: any, idMonth: any ) {
     console.log("linking banches to the new template ", idBrigade.branches)
-    this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate)
+    this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate, idMonth)
       .subscribe({
         next: (data) => {
           console.log("success ", data)
