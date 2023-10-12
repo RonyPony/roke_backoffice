@@ -23,13 +23,14 @@ export class PlanningService {
         return this.http.get<Planning[]>(`${environment.urlApi}/api/Planning`);
     }
 
-    savePlanning(idTemplate: string, idBrigade: any, name: string, StartDate: string, finalDate: string) {
+    savePlanning(idTemplate: string, idBrigade: any, name: string, StartDate: string, finalDate: string, idMonth: string) {
         var data = {
             "name": name,
             "idTemplate": idTemplate,
             "idBrigade": idBrigade,
             "StartDate": StartDate,
-            "finalDate": finalDate
+            "finalDate": finalDate,
+            "idMonth": idMonth
         }
         return this.http.post<Planning>(`${environment.urlApi}/api/Planning/Create`, data);
     }
