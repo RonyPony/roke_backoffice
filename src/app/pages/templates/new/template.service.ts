@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { LocationRoke, Month, Template } from './new.model';
+import { LocationRoke, Month, Template } from '../model';
 
 @Injectable({
     providedIn: 'root'

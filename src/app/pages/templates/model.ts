@@ -1,5 +1,6 @@
 export interface Template {
     id: string;
+    name: string;
     status: TemplateStatus;
     createdOn: string;
     updatedOn: string;

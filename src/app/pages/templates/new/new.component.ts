@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Template } from '../list/list.model';
 import { TemplateService } from './template.service';
-import { LocationRoke, Month } from './new.model';
+import { LocationRoke, Month, Template } from '../model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

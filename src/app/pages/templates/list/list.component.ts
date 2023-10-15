@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Template } from './list.model';
 import { TemplateService } from './template.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup } from '@angular/forms';
+import { Template } from '../model';
 
 @Component({
   selector: 'app-list',

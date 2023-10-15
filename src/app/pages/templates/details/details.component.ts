@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LocationRoke } from '../new/new.model';
+import { LocationRoke, Template } from '../model';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TemplateService } from "./template.service";
 import { ActivatedRoute, Router } from '@angular/router'
-import { Template } from './details.model';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',

@@ -3,7 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Brigade, Planning } from '../new/list.model';
 import { PlanningService } from './planning.service';
 import { Month } from './list.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NewComponent implements OnInit {
   modalRef?: BsModalRef;
-  constructor(private modalService: BsModalService, private planningService: PlanningService) {
+  constructor(private modalService: BsModalService, private planningService: PlanningService, private formBuilder: UntypedFormBuilder) {
 
   }
   months: Month[]
@@ -21,12 +21,20 @@ export class NewComponent implements OnInit {
   brigade: Brigade[]
   PlanningListForm: FormGroup
   isEditing: boolean = false;
-  
+
 
   ngOnInit(): void {
+    this.loadForm();
     this.getAllMonths();
     this.getAllPlanning();
     this.getAllBrigade();
+  }
+
+  loadForm() {
+    this.PlanningListForm = this.formBuilder.group({
+      id: ['']
+      // name: ['', [Validators.required]]
+    });
   }
 
   formatString(s: String) {
@@ -49,7 +57,7 @@ export class NewComponent implements OnInit {
         }
       })
   }
-  
+
   getAllBrigade() {
     console.log("getting brigade");
     this.planningService.GetAllBrigade()
@@ -60,7 +68,7 @@ export class NewComponent implements OnInit {
       })
   }
 
-  savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any,finalDate: any, idMonth: any ) {
+  savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any, finalDate: any, idMonth: any) {
     console.log("linking banches to the new template ", idBrigade.branches)
     this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate, idMonth)
       .subscribe({
