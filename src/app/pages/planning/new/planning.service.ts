@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Month, Planning, Brigade } from './list.model';
+import { Branch } from '../../branches/list/list.model';
 
 
 @Injectable({
@@ -18,6 +19,12 @@ export class PlanningService {
     GetAllPlannings() {
         return this.http.get<Planning[]>(`${environment.urlApi}/api/template`);
     }
+    GetAllPlanningsById(id: number) {
+        return this.http.get<Planning[]>(`${environment.urlApi}/api/template?id=${id}`);
+    }
+
+
+
 
     GetAll() {
         return this.http.get<Planning[]>(`${environment.urlApi}/api/Planning`);
@@ -35,8 +42,12 @@ export class PlanningService {
         return this.http.post<Planning>(`${environment.urlApi}/api/Planning/Create`, data);
     }
 
-   
+    GetAllBranchesByTemplateId(id: string) {
+        return this.http.get<Branch[]>(`${environment.urlApi}/api/template/` + id);
+    }
+
+
     GetAllBrigade() {
         return this.http.get<Brigade[]>(`${environment.urlApi}/api/Brigade`);
-      }
+    }
 }

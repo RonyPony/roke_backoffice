@@ -41,10 +41,25 @@
     <form class="form2" (ngSubmit)="savePlanning()" [formGroup]="PlanningListForm">
 
         <label>Plantilla</label>
-        <select class="form-select" size="3" aria-label="size 3 select example">
+        <select formControlName="selectedTemplate" class="form-select" size="3" aria-label="size 3 select example">
             <option selected>Ninguno</option>
-            <option *ngFor="let items of planificacion" value="{{items.id}}">{{items.name}}</option>
+            <option (click)="getBranches(items.id)" *ngFor="let items of planificacion" value="{{items.id}}">
+                {{items.name}}
+            </option>
         </select>
+        <table>
+            <tr>
+                <th>Sucursal</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Brigada</th>
+            </tr>
+            <tr *ngFor="let item of SelectedTemplateBranches">
+                <td>xxx</td>
+                <td>xxx</td>
+                <td>xxx</td>
+            </tr>
+        </table>
         <br>
         <label>Brigada</label>
         <select class="form-select" size="3" aria-label="size 3 selects examples">
@@ -52,33 +67,12 @@
             <option *ngFor="let item of brigade" value="{{item.id}}">{{item.name}}</option>
         </select>
 
-        <!-- <div class="col">
+        <div class="col">
             <label>Desde</label>
             <input type="date" class="form-control" placeholder="First name" aria-label="First name">
-        </div> -->
+        </div>
 
-        <input type="text" name="datefilter" value="" />
 
-        <script type="text/javascript">
-            $(function () {
-
-                $('input[name="datefilter"]').daterangepicker({
-                    autoUpdateInput: false,
-                    locale: {
-                        cancelLabel: 'Clear'
-                    }
-                });
-
-                $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-                    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-                });
-
-                $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                    $(this).val('');
-                });
-
-            });
-        </script>
         <div class="col">
             <label>Hasta</label>
             <input type="date" class="form-control" placeholder="Last name" aria-label="Last name">

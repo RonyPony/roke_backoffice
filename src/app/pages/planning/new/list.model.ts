@@ -11,9 +11,12 @@ export interface Planning {
 }
 export interface Brigade {
     id: string;
-
     name: string,
-  
+}
+
+export interface branch {
+    id: string;
+    name: string;
 }
 
 export interface Month {

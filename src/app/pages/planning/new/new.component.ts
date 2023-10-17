@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Brigade, Planning } from '../new/list.model';
+import { Brigade, Planning, branch } from '../new/list.model';
 import { PlanningService } from './planning.service';
 import { Month } from './list.model';
 import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Branch } from '../../branches/list/list.model';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class NewComponent implements OnInit {
   planificacion: Planning[]
   brigade: Brigade[]
   PlanningListForm: FormGroup
+  SelectedTemplateBranches: any[];
   isEditing: boolean = false;
 
 
@@ -49,10 +51,25 @@ export class NewComponent implements OnInit {
         }
       })
   }
+  getBranches(id: any) {
+    // var tmpl = this.PlanningListForm.get('selectedTemplate').value;
+    console.log("getting branches of ", id);
+    this.planningService.GetAllBranchesByTemplateId(id).subscribe({
+      next: (data) => {
+        this.SelectedTemplateBranches = data;
+        this.SelectedTemplateBranches.forEach(element => {
+          console.log("jajaja ");
+        });
+
+      }
+    });
+
+  }
   getAllPlanning() {
     this.planningService.GetAllPlannings()
       .subscribe({
         next: (data) => {
+          console.log("yyy", data)
           this.planificacion = data;
         }
       })
@@ -71,6 +88,16 @@ export class NewComponent implements OnInit {
   savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any, finalDate: any, idMonth: any) {
     console.log("linking banches to the new template ", idBrigade.branches)
     this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate, idMonth)
+      .subscribe({
+        next: (data) => {
+          console.log("success ", data)
+        }
+      });
+  }
+
+  getTemplateById(id: any) {
+
+    this.planningService.GetAllPlanningsById(id)
       .subscribe({
         next: (data) => {
           console.log("success ", data)
