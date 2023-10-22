@@ -36,12 +36,12 @@ export const MENU: MenuItem[] = [
     //     label: 'MENUITEMS.APPS.TEXT',
     //     isTitle: true
     // },
-    // {
-    //     id: 10,
-    //     label: 'MENUITEMS.CALENDAR.TEXT',
-    //     icon: 'bx-calendar',
-    //     link: '/calendar',
-    // },
+    {
+        id: 3,
+        label: 'MENUITEMS.CALENDAR.TEXT',
+        icon: 'bx-calendar',
+        link: '/calendar',
+    },
     // {
     //     id: 11,
     //     label: 'Asignar',

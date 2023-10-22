@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Month, Planning, Brigade } from './list.model';
 import { Branch } from '../../branches/list/list.model';
+import { TemplateDetails } from '../../templates/model';
 
 
 @Injectable({
@@ -43,7 +44,7 @@ export class PlanningService {
     }
 
     GetAllBranchesByTemplateId(id: string) {
-        return this.http.get<Branch[]>(`${environment.urlApi}/api/template/` + id);
+        return this.http.get<TemplateDetails[]>(`${environment.urlApi}/api/template/` + id);
     }
 
 

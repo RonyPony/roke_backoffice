@@ -11,6 +11,15 @@ export interface Template {
     contactHasWhatsapp: boolean;
 }
 
+export interface TemplateDetails {
+    id: string
+    name: string
+    location: LocationRoke[]
+    status: number
+    createOn: string
+    lastUpdate: string
+}
+
 export interface LocationRoke {
     id: string;
     sucursal: string;

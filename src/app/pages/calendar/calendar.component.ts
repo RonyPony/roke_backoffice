@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import esLocale from '@fullcalendar/core/locales/es';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -44,17 +44,19 @@ export class CalendarComponent implements OnInit {
       listPlugin,
     ],
     headerToolbar: {
-      left: 'dayGridMonth,dayGridWeek,dayGridDay',
+      left: 'dayGridYear,dayGridMonth,dayGridWeek,dayGridDay',
       center: 'title',
       right: 'prevYear,prev,next,nextYear'
     },
     initialView: "dayGridMonth",
     themeSystem: "bootstrap",
     initialEvents: calendarEvents,
-    weekends: true,
+    weekends: false,
+    locale: esLocale,
     editable: true,
     selectable: true,
     selectMirror: true,
+
     dayMaxEvents: true,
     dateClick: this.openModal.bind(this),
     eventClick: this.handleEventClick.bind(this),
@@ -92,7 +94,7 @@ export class CalendarComponent implements OnInit {
     var category = clickInfo.event.classNames;
     this.formEditData = this.formBuilder.group({
       editTitle: clickInfo.event.title,
-      editCategory: category instanceof Array?clickInfo.event.classNames[0]:clickInfo.event.classNames,
+      editCategory: category instanceof Array ? clickInfo.event.classNames[0] : clickInfo.event.classNames,
     });
     this.modalRef = this.modalService.show(this.editmodalShow);
   }
@@ -109,7 +111,7 @@ export class CalendarComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private formBuilder: UntypedFormBuilder
-  ) {}
+  ) { }
 
   get form() {
     return this.formData.controls;
@@ -149,6 +151,7 @@ export class CalendarComponent implements OnInit {
    * Event add modal
    */
   openModal(event?: any) {
+    console.log("opening modal ", event)
     this.newEventDate = event;
     this.modalRef = this.modalService.show(this.modalShow);
   }

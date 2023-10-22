@@ -5,6 +5,7 @@ import { PlanningService } from './planning.service';
 import { Month } from './list.model';
 import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Branch } from '../../branches/list/list.model';
+import { LocationRoke, TemplateDetails } from '../../templates/model';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { Branch } from '../../branches/list/list.model';
 })
 export class NewComponent implements OnInit {
   modalRef?: BsModalRef;
+  isAnyTemplateSelected: boolean = false;
   constructor(private modalService: BsModalService, private planningService: PlanningService, private formBuilder: UntypedFormBuilder) {
 
   }
@@ -21,8 +23,10 @@ export class NewComponent implements OnInit {
   planificacion: Planning[]
   brigade: Brigade[]
   PlanningListForm: FormGroup
-  SelectedTemplateBranches: any[];
+  SelectedTemplateBranches: LocationRoke[];
   isEditing: boolean = false;
+  ListArray: string[];
+  monthDays: number[] = [];
 
 
   ngOnInit(): void {
@@ -30,6 +34,15 @@ export class NewComponent implements OnInit {
     this.getAllMonths();
     this.getAllPlanning();
     this.getAllBrigade();
+    this.generateDays();
+  }
+  generateDays() {
+    for (let index = 0; index < 30; index++) {
+      this.monthDays.push(index + 1)
+    }
+
+    console.log(this.monthDays)
+
   }
 
   loadForm() {
@@ -52,15 +65,18 @@ export class NewComponent implements OnInit {
       })
   }
   getBranches(id: any) {
+    if (id === 0) {
+      this.isAnyTemplateSelected = false;
+    } else {
+      this.isAnyTemplateSelected = true;
+    }
+
     // var tmpl = this.PlanningListForm.get('selectedTemplate').value;
     console.log("getting branches of ", id);
     this.planningService.GetAllBranchesByTemplateId(id).subscribe({
-      next: (data) => {
-        this.SelectedTemplateBranches = data;
-        this.SelectedTemplateBranches.forEach(element => {
-          console.log("jajaja ");
-        });
-
+      next: (data: TemplateDetails[]) => {
+        this.SelectedTemplateBranches = data["location"];
+        console.log(this.SelectedTemplateBranches)
       }
     });
 
@@ -73,6 +89,10 @@ export class NewComponent implements OnInit {
           this.planificacion = data;
         }
       })
+  }
+
+  selectBrigade() {
+    console.log("selecting brigade ")
   }
 
   getAllBrigade() {

@@ -11,6 +11,7 @@ import { DndModule } from 'ngx-drag-drop';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PlanningRoutingModule } from './planning-routing.module';
 import { NewComponent } from './new/new.component';
+import { CalendarComponent } from '../calendar/calendar.component';
 
 
 
@@ -21,6 +22,7 @@ import { NewComponent } from './new/new.component';
   ],
   imports: [
     CommonModule,
+    // CalendarComponent,
     FormsModule,
     ReactiveFormsModule,
     PlanningRoutingModule,

@@ -51,6 +51,7 @@ import { BrigadeModule } from './brigade/brigade.module';
   declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
   imports: [
     CommonModule,
+
     FormsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),

@@ -42,12 +42,21 @@
 
         <label>Plantilla</label>
         <select formControlName="selectedTemplate" class="form-select" size="3" aria-label="size 3 select example">
-            <option selected>Ninguno</option>
+            <option (click)="getBranches(0)" selected>Ninguno</option>
             <option (click)="getBranches(items.id)" *ngFor="let items of planificacion" value="{{items.id}}">
                 {{items.name}}
             </option>
         </select>
-        <table>
+        <br>
+        <div *ngIf="!isAnyTemplateSelected" style="width: 100%;text-align: center;">
+            <span class="material-symbols-outlined">
+                linked_services
+            </span>
+            <br>
+            <small>Selecciona una plantilla</small>
+        </div>
+
+        <table *ngIf="isAnyTemplateSelected" class="planTable">
             <tr>
                 <th>Sucursal</th>
                 <th>Desde</th>
@@ -55,28 +64,26 @@
                 <th>Brigada</th>
             </tr>
             <tr *ngFor="let item of SelectedTemplateBranches">
-                <td>xxx</td>
-                <td>xxx</td>
-                <td>xxx</td>
+                <td>{{item.sucursal}}</td>
+                <td>
+                    <select name="fromDay" id="fromDay">
+                        <option *ngFor="let day of monthDays" value="{{day}}">{{day}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="toDay" id="toDay">
+                        <option *ngFor="let day of monthDays" value="{{day}}">{{day}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="brigade" id="brigade">
+                        <option (click)="getBranches(items.id)" *ngFor="let item of brigade" value="{{item.id}}">
+                            {{item.name}}</option>
+                    </select>
+                </td>
             </tr>
         </table>
         <br>
-        <label>Brigada</label>
-        <select class="form-select" size="3" aria-label="size 3 selects examples">
-            <option selected>Ninguno</option>
-            <option *ngFor="let item of brigade" value="{{item.id}}">{{item.name}}</option>
-        </select>
-
-        <div class="col">
-            <label>Desde</label>
-            <input type="date" class="form-control" placeholder="First name" aria-label="First name">
-        </div>
-
-
-        <div class="col">
-            <label>Hasta</label>
-            <input type="date" class="form-control" placeholder="Last name" aria-label="Last name">
-        </div>
         <button type="submit" class="btn btn-primary">Seleccionar</button>
 
 
