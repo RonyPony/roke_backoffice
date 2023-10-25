@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Brigade, Planning, branch } from '../new/list.model';
+import { Brigade, LocalPlanning, Planning, branch } from '../new/list.model';
 import { PlanningService } from './planning.service';
 import { Month } from './list.model';
 import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -27,6 +27,8 @@ export class NewComponent implements OnInit {
   isEditing: boolean = false;
   ListArray: string[];
   monthDays: number[] = [];
+  selectedMonth: Month;
+  planningToSave: LocalPlanning[];
 
 
   ngOnInit(): void {
@@ -106,7 +108,8 @@ export class NewComponent implements OnInit {
   }
 
   savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any, finalDate: any, idMonth: any) {
-    console.log("linking banches to the new template ", idBrigade.branches)
+    console.log("linking banches to the new template ", this.selectedMonth.month)
+
     this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate, idMonth)
       .subscribe({
         next: (data) => {
@@ -115,8 +118,9 @@ export class NewComponent implements OnInit {
       });
   }
 
-  getTemplateById(id: any) {
 
+
+  getTemplateById(id: any) {
     this.planningService.GetAllPlanningsById(id)
       .subscribe({
         next: (data) => {
@@ -132,8 +136,9 @@ export class NewComponent implements OnInit {
  * @param content modal content
 
  */
-  openModal(content: any) {
+  openModal(content: any, mes: Month) {
     // this.submitted = false;
+    this.selectedMonth = mes;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
     console.log(this.modalRef)
   }

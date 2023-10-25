@@ -18,7 +18,7 @@
 
                             </div>
 
-                            <button (click)="openModal(content)" class="btn btn-primary loadTemplateBtn"><i
+                            <button (click)="openModal(content,item)" class="btn btn-primary loadTemplateBtn"><i
                                     class="bx bxs-file-plus"></i> Seleccionar
                             </button>
 
@@ -36,7 +36,8 @@
 <ng-template #content role="document" let-modal>
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Seleccionar plantilla</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"
+            (click)="modalRef?.hide()"></button>
     </div>
     <form class="form2" (ngSubmit)="savePlanning()" [formGroup]="PlanningListForm">
 
@@ -48,6 +49,8 @@
             </option>
         </select>
         <br>
+        <h3 *ngIf="isAnyTemplateSelected">Mes: <span>{{selectedMonth.month}}</span></h3>
+        <br>
         <div *ngIf="!isAnyTemplateSelected" style="width: 100%;text-align: center;">
             <span class="material-symbols-outlined">
                 linked_services
@@ -55,7 +58,6 @@
             <br>
             <small>Selecciona una plantilla</small>
         </div>
-
         <table *ngIf="isAnyTemplateSelected" class="planTable">
             <tr>
                 <th>Sucursal</th>

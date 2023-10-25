@@ -38,3 +38,11 @@ export enum BrigadegStatus {
     Closed,
     Approved
 }
+
+export interface LocalPlanning {
+    month: Month;
+    sucursal: branch;
+    fromDay: number;
+    toDay: number;
+    brigade: Brigade;
+}
