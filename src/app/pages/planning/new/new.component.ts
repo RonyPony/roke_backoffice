@@ -28,7 +28,12 @@ export class NewComponent implements OnInit {
   ListArray: string[];
   monthDays: number[] = [];
   selectedMonth: Month;
-  planningToSave: LocalPlanning[];
+  planningToSave: LocalPlanning[]=[];
+  idTemplate: string;
+  
+  currentTmpSelectedBranchId:string;
+  currentTmpSelectedFromDay:number;
+  currentTmpSelectedToDay:number;
 
 
   ngOnInit(): void {
@@ -67,6 +72,7 @@ export class NewComponent implements OnInit {
       })
   }
   getBranches(id: any) {
+    this.idTemplate = id;
     if (id === 0) {
       this.isAnyTemplateSelected = false;
     } else {
@@ -107,10 +113,9 @@ export class NewComponent implements OnInit {
       })
   }
 
-  savePlanning(idBrigade: any, name: any, idTemplate: any, StartDate: any, finalDate: any, idMonth: any) {
-    console.log("linking banches to the new template ", this.selectedMonth.month)
-
-    this.planningService.savePlanning(name, idBrigade.branches, idTemplate, StartDate, finalDate, idMonth)
+  savePlanning() {
+    console.log("saving ",this.planningToSave)
+    this.planningService.savePlanning(this.idTemplate, 'plantilla', this.selectedMonth.id, this.planningToSave)
       .subscribe({
         next: (data) => {
           console.log("success ", data)
@@ -118,6 +123,31 @@ export class NewComponent implements OnInit {
       });
   }
 
+
+  onfromDaySelected(id:any, mmg: number){
+    console.log(id, mmg)
+    this.currentTmpSelectedBranchId = id;
+    this.currentTmpSelectedFromDay = mmg;
+  }
+  onToDaySelected(toDayValue:number){
+    this.currentTmpSelectedToDay = toDayValue;
+  }
+
+  onBrigadeSelected(brigadeId:string){
+    console.log(this.currentTmpSelectedFromDay,this.currentTmpSelectedBranchId,this.currentTmpSelectedToDay)
+
+    this.planningToSave.push({
+      idLocation:this.currentTmpSelectedBranchId,
+      idBrigade:this.currentTmpSelectedBranchId,
+      StartDate:new Date(new Date().getFullYear(),this.getMonthFromString(this.selectedMonth.month.toString()),this.currentTmpSelectedToDay),
+      finalDate:new Date(new Date().getFullYear(),this.getMonthFromString(this.selectedMonth.month.toString()),this.currentTmpSelectedFromDay)
+    })
+  }
+
+  getMonthFromString(mex:string){
+    var months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
+    return months.indexOf(mex.toLowerCase());
+  }
 
 
   getTemplateById(id: any) {

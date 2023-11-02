@@ -68,19 +68,22 @@
             <tr *ngFor="let item of SelectedTemplateBranches">
                 <td>{{item.sucursal}}</td>
                 <td>
-                    <select name="fromDay" id="fromDay">
+                    <select #fromday  name="fromDay"  id="fromDay" (change)="onfromDaySelected(item.id, fromday.value)">
+                        <option></option>
+                        <option  *ngFor="let day of monthDays"  value="{{day}}">{{day}}</option>
+                    </select>
+                </td>
+                <td>
+                    <select #today name="toDay" id="toDay" (change)="onToDaySelected(today.value)">
+                        <option></option>
                         <option *ngFor="let day of monthDays" value="{{day}}">{{day}}</option>
                     </select>
                 </td>
                 <td>
-                    <select name="toDay" id="toDay">
-                        <option *ngFor="let day of monthDays" value="{{day}}">{{day}}</option>
-                    </select>
-                </td>
-                <td>
-                    <select name="brigade" id="brigade">
-                        <option (click)="getBranches(items.id)" *ngFor="let item of brigade" value="{{item.id}}">
-                            {{item.name}}</option>
+                    <select #brigades name="brigade" id="brigade" (change)="onBrigadeSelected(brigades.value)">
+                        <option></option>
+                        <option (click)="getBranches(items.id)" *ngFor="let brig of brigade" value="{{brig.id}}">
+                            {{brig.name}}</option>
                     </select>
                 </td>
             </tr>

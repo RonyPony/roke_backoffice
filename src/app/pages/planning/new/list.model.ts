@@ -40,9 +40,8 @@ export enum BrigadegStatus {
 }
 
 export interface LocalPlanning {
-    month: Month;
-    sucursal: branch;
-    fromDay: number;
-    toDay: number;
-    brigade: Brigade;
+    idLocation:string,
+    idBrigade:string,
+    StartDate:Date,
+    finalDate:Date
 }
