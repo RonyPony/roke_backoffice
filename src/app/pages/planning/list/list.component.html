@@ -15,31 +15,20 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <h1 *ngIf="!planning">Sin Planificaciones</h1>
-            <table *ngIf="planning" class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
+            <h1 *ngIf="!hasPlanning">Sin Planificaciones</h1>
+            <table *ngIf="hasPlanning" class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
               <thead>
                 <tr>
                   <th scope="col">Nombre</th>
                   <th scope="col">Estado</th>
-                  <th scope="col">Encargado</th>
-                  <th scope="col">Numero de Contacto</th>
-                  <th scope="col">Tiene Whatsapp?</th>
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of Planning">
-                  <td>{{data.sucursal}}</td>
-                  <td>{{data.status}}</td>
-                  <td>{{data.contactName}}</td>
-                  <td>{{data.contactNumber}}</td>
-                  <td>
-                    <div class="form-check font-size-16">
-                      <input disabled id="customCheck" type="checkbox" class="form-check-input"
-                        [(ngModel)]="data.contactHasWhatsapp" />
-                      <label class="form-check-label" for="customCheck">&nbsp;</label>
-                    </div>
-                  </td>
+                <tr *ngFor="let data of planning">
+                  <td>{{data.name}}</td>
+                  <td>{{getStatus(data.status)}}</td>
+
                   <td>
                     <ul class="list-unstyled hstack gap-1 mb-0">
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">

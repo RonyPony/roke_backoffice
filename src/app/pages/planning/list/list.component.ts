@@ -3,6 +3,7 @@ import { Planning } from './list.model';
 import { PlanningService } from './planning.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup } from '@angular/forms';
+import { switchMapTo } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -19,19 +20,25 @@ export class ListComponent {
 
   }
   planning: Planning[];
-  pl: Planning = {
-    id: ''
-  };
+  hasPlanning:boolean=false;
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
-    this.planning.push(this.pl)
     this.getAll();
   }
 
+
   openViewModal(content: any) {
     this.modalRef = this.modalService.show(content);
+  }
+
+  getStatus(sts){
+    switch (sts) {
+      case 0:
+        return "Activa";
+        break;
+
+      default:
+        break;
+    }
   }
 
   openModal(content: any) {
@@ -82,11 +89,13 @@ export class ListComponent {
     this.PlanningListForm.get('id').setValue(this.planning[index].id);
   }
   getAll() {
-    console.log("getting Planning");
+
     this.service.GetAll()
       .subscribe({
         next: (data) => {
+          console.log("getting Planning",data,this.hasPlanning);
           this.planning = data;
+          this.hasPlanning = data.length>=1;
         }
       })
   }

@@ -30,7 +30,7 @@ export class NewComponent implements OnInit {
   selectedMonth: Month;
   planningToSave: LocalPlanning[]=[];
   idTemplate: string;
-  
+
   currentTmpSelectedBranchId:string;
   currentTmpSelectedFromDay:number;
   currentTmpSelectedToDay:number;
@@ -115,7 +115,7 @@ export class NewComponent implements OnInit {
 
   savePlanning() {
     console.log("saving ",this.planningToSave)
-    this.planningService.savePlanning(this.idTemplate, 'plantilla', this.selectedMonth.id, this.planningToSave)
+    this.planningService.savePlanning(this.idTemplate, 'plantilla del mes de '+this.selectedMonth.month, this.selectedMonth.id, this.planningToSave)
       .subscribe({
         next: (data) => {
           console.log("success ", data)
