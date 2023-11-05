@@ -26,7 +26,15 @@ export class ListComponent {
     //Add 'implements OnInit' to the class.
     this.loadForm();
     this.getAll();
+    this.loadTech();
+  }
 
+  loadTech() {
+    this.service.getAllTech().subscribe({
+      next:(data)=>{
+        this.technichian = data;
+      }
+    })
   }
 
   loadForm() {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Brigade } from './list/list.model';
+import { Brigade, BrigadeUser } from './list/list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,10 @@ export class BrigadeService {
 
   GetAll() {
     return this.http.get<Brigade[]>(`${environment.urlApi}/api/Brigade`);
+  }
+
+  getAllTech(){
+    return this.http.get<BrigadeUser[]>(`${environment.urlApi}/api/Usuario/tech`);
   }
 
   saveBrigade(data: any) {
