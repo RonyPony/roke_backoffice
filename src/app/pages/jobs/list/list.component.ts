@@ -68,6 +68,13 @@ export class ListComponent implements OnInit {
           }
         })
   }
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
+  }
 
   /**
   * Open modal

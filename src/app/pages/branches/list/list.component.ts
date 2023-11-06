@@ -3,6 +3,7 @@ import { Branch } from './list.model';
 import { BranchService } from './branch.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -26,6 +27,13 @@ export class ListComponent {
     this.loadForm();
     this.getAll();
 
+  }
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
   }
 
   loadForm() {

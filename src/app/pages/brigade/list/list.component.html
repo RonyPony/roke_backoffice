@@ -91,7 +91,7 @@
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal"
                     (click)="modalRef?.hide()">Close</button>
                 <button *ngIf="isEditing" type="submit" class="btn btn-success" id="update-btn">Actualizar</button>
-                <button *ngIf="!isEditing" type="submit" class="btn btn-success" id="add-btn">Guardar</button>
+                <button *ngIf="!isEditing" type="submit" (click)="shoModal()" (click)="modalRef?.hide()" class="btn btn-success" id="add-btn">Guardar</button>
             </div>
         </div>
     </form>

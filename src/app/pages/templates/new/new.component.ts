@@ -3,6 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TemplateService } from './template.service';
 import { LocationRoke, Month, Template } from '../model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new',
@@ -56,6 +57,13 @@ export class NewComponent implements OnInit {
           console.log("success ", data)
         }
       });
+  }
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
   }
 
   saveTemplate() {

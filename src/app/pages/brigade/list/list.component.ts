@@ -4,6 +4,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BrigadeService } from '../brigade.service';
 import { Brigade, BrigadeUser } from './list.model';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -134,6 +136,14 @@ export class ListComponent {
     this.isEditing = true;
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
     this.setDataToEdit(index);
+  }
+  
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
   }
 
   setDataToEdit(index: any) {

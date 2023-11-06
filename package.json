@@ -72,7 +72,7 @@
     "rxjs": "^7.8.1",
     "sass-loader": "^13.3.2",
     "simplebar-angular": "^3.2.4",
-    "sweetalert2": "^11.7.16",
+    "sweetalert2": "^11.9.0",
     "tslib": "^2.6.0",
     "zone.js": "^0.13.1"
   },
