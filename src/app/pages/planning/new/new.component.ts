@@ -138,7 +138,7 @@ export class NewComponent implements OnInit {
 
     this.planningToSave.push({
       idLocation:this.currentTmpSelectedBranchId,
-      idBrigade:this.currentTmpSelectedBranchId,
+      idBrigade:brigadeId,
       StartDate:new Date(new Date().getFullYear(),this.getMonthFromString(this.selectedMonth.month.toString()),this.currentTmpSelectedToDay),
       finalDate:new Date(new Date().getFullYear(),this.getMonthFromString(this.selectedMonth.month.toString()),this.currentTmpSelectedFromDay)
     })

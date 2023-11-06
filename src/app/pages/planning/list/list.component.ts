@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Planning } from './list.model';
+import { RawPlanning } from './list.model';
 import { PlanningService } from './planning.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup } from '@angular/forms';
@@ -19,7 +19,7 @@ export class ListComponent {
   constructor(public service: PlanningService, private modalService: BsModalService) {
 
   }
-  planning: Planning[];
+  planning: RawPlanning[][] = [];
   hasPlanning:boolean=false;
   ngOnInit(): void {
     this.getAll();
@@ -86,15 +86,18 @@ export class ListComponent {
   }
 
   setDataToEdit(index: number) {
-    this.PlanningListForm.get('id').setValue(this.planning[index].id);
+    // this.PlanningListForm.get('id').setValue(this.planning[index].id);
   }
   getAll() {
-
     this.service.GetAll()
       .subscribe({
         next: (data) => {
-          console.log("getting Planning",data,this.hasPlanning);
-          this.planning = data;
+          for(var index in data)
+            {
+                this.planning.push(data[index]);
+                console.log("planning ",this.planning);  // output: Apple Orange Banana
+            }
+          // this.planning = data;
           this.hasPlanning = data.length>=1;
         }
       })
