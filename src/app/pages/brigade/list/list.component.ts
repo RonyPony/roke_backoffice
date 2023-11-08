@@ -23,12 +23,14 @@ export class ListComponent {
   }
   brigade: Brigade[];
 
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.loadForm();
     this.getAll();
     this.loadTech();
+    this.getAllTech();
   }
 
   loadTech() {
@@ -160,4 +162,14 @@ export class ListComponent {
         }
       })
   }
+  getAllTech() {
+    this.service.GetAllTech()
+        .subscribe({
+          next: (data) => {
+            this.technichian = data;
+          }
+        })
+  }
 }
+
+

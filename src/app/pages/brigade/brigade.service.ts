@@ -30,4 +30,7 @@ export class BrigadeService {
   getTechnichian() {
     return this.http.delete<string>(`${environment.urlApi}/api/Brigade`);
   }
+  GetAllTech() {
+    return this.http.get<BrigadeUser[]>(`${environment.urlApi}/api/Usuario`);
+  }
 }
