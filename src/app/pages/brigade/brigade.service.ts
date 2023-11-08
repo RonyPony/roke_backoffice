@@ -33,4 +33,12 @@ export class BrigadeService {
   GetAllTech() {
     return this.http.get<BrigadeUser[]>(`${environment.urlApi}/api/Usuario`);
   }
+  asinTech(brigadeId: string, tecnicosId: any) {
+    var data = {
+        "brigadeId": brigadeId,
+        "tecnicosId": tecnicosId
+    }
+    return this.http.post<Brigade>(`${environment.urlApi}/api/Brigade/asign`, data);
+}
+
 }

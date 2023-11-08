@@ -30,11 +30,13 @@ export class ListComponent {
     this.loadForm();
     this.getAll();
     this.loadTech();
-    this.getAllTech();
+   
+   
   }
 
   loadTech() {
-    this.service.getAllTech().subscribe({
+    console.log("tech")
+    this.service.GetAllTech().subscribe({
       next:(data)=>{
         this.technichian = data;
       }
@@ -44,7 +46,8 @@ export class ListComponent {
   loadForm() {
     this.brigadeForm = this.formBuilder.group({
       id: [''],
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      technichian: ['']
     });
   }
 
@@ -67,8 +70,6 @@ export class ListComponent {
   */
   saveBrigades() {
 
-
-
     if (this.brigadeForm.valid) {
       if (this.isEditing) {
         console.log("updating... ", this.brigadeForm.controls.id.value)
@@ -77,6 +78,7 @@ export class ListComponent {
             next: (data) => {
               console.log(data)
               this.getAll();
+              this.asignTech(this.brigadeForm.value, data.id)
               this.modalService.hide();
             }
           })
@@ -87,12 +89,12 @@ export class ListComponent {
             next: (data) => {
               console.log(data)
               this.getAll();
+              this.asignTech(this.brigadeForm.value, data.id)
               this.modalService.hide();
             }
           })
       }
     }
-
     // setTimeout(() => {
     //   this.brigadeForm.reset();
     // }, 2000);
@@ -148,6 +150,19 @@ export class ListComponent {
     });
   }
 
+  asignTech(data: any, brigadeId: any) {
+    console.log("linking banches to the new template ", data.technichian)
+    this.service.asinTech(brigadeId, data.technichian)
+      .subscribe({
+        next: (data) => {
+          console.log("success ", data)
+        }
+      });
+  }
+
+  
+
+
   setDataToEdit(index: any) {
     var brigade = this.brigade.find((e) => e.id === index)
     this.brigadeForm.get('id').setValue(brigade.id);
@@ -162,14 +177,7 @@ export class ListComponent {
         }
       })
   }
-  getAllTech() {
-    this.service.GetAllTech()
-        .subscribe({
-          next: (data) => {
-            this.technichian = data;
-          }
-        })
-  }
+
 }
 
 
