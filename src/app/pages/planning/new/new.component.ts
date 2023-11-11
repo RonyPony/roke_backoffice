@@ -124,10 +124,10 @@ export class NewComponent implements OnInit {
   }
 
 
-  onfromDaySelected(id:any, mmg: number){
-    console.log(id, mmg)
+  onfromDaySelected(id:any, day: number){
+    console.log(id, day)
     this.currentTmpSelectedBranchId = id;
-    this.currentTmpSelectedFromDay = mmg;
+    this.currentTmpSelectedFromDay = day;
   }
   onToDaySelected(toDayValue:number){
     this.currentTmpSelectedToDay = toDayValue;
