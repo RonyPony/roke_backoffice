@@ -129,6 +129,15 @@ export class ListComponent implements OnInit {
   /**
   * Save user
   */
+
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
+  }
+
   saveUser() {
     if (this.jobListForm.valid) {
       this.service.saveTicket(this.jobListForm.value)
@@ -139,7 +148,7 @@ export class ListComponent implements OnInit {
           }
         })
     }
-
+    
     setTimeout(() => {
       this.jobListForm.reset();
     }, 2000);

@@ -110,7 +110,7 @@
       <div class="hstack gap-2 justify-content-end">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal"
           (click)="modal.close('Close click')">Close</button>
-        <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
+        <button type="submit" class="btn btn-success" (click)="shoModal()" (click)="modalRef?.hide()" id="add-btn">Guardar</button>
       </div>
     </div>
   </form>

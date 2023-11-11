@@ -4,6 +4,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { BrigadeService } from '../brigade.service';
 import { Brigade, BrigadeUser } from './list.model';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -21,16 +23,20 @@ export class ListComponent {
   }
   brigade: Brigade[];
 
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.loadForm();
     this.getAll();
     this.loadTech();
+   
+   
   }
 
   loadTech() {
-    this.service.getAllTech().subscribe({
+    console.log("tech")
+    this.service.GetAllTech().subscribe({
       next:(data)=>{
         this.technichian = data;
       }
@@ -40,7 +46,8 @@ export class ListComponent {
   loadForm() {
     this.brigadeForm = this.formBuilder.group({
       id: [''],
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      technichian: ['']
     });
   }
 
@@ -63,8 +70,6 @@ export class ListComponent {
   */
   saveBrigades() {
 
-
-
     if (this.brigadeForm.valid) {
       if (this.isEditing) {
         console.log("updating... ", this.brigadeForm.controls.id.value)
@@ -73,6 +78,7 @@ export class ListComponent {
             next: (data) => {
               console.log(data)
               this.getAll();
+              this.asignTech(this.brigadeForm.value, data.id)
               this.modalService.hide();
             }
           })
@@ -83,12 +89,12 @@ export class ListComponent {
             next: (data) => {
               console.log(data)
               this.getAll();
+              this.asignTech(this.brigadeForm.value, data.id)
               this.modalService.hide();
             }
           })
       }
     }
-
     // setTimeout(() => {
     //   this.brigadeForm.reset();
     // }, 2000);
@@ -135,6 +141,27 @@ export class ListComponent {
     this.modalRef = this.modalService.show(content, { class: 'modal-md' });
     this.setDataToEdit(index);
   }
+  
+  shoModal(){
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
+  }
+
+  asignTech(data: any, brigadeId: any) {
+    console.log("linking banches to the new template ", data.technichian)
+    this.service.asinTech(brigadeId, data.technichian)
+      .subscribe({
+        next: (data) => {
+          console.log("success ", data)
+        }
+      });
+  }
+
+  
+
 
   setDataToEdit(index: any) {
     var brigade = this.brigade.find((e) => e.id === index)
@@ -150,4 +177,7 @@ export class ListComponent {
         }
       })
   }
+
 }
+
+
