@@ -50,7 +50,7 @@ export class CalendarComponent implements OnInit {
     },
     initialView: "dayGridMonth",
     themeSystem: "bootstrap",
-    initialEvents: 'https://localhost:7070/api/Planning/calendar',
+    initialEvents: 'https://69.197.150.152:8010/api/Planning/calendar',
     weekends: false,
     locale: esLocale,
     editable: true,

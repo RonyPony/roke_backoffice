@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class ConfigService {
 
-  URL = 'https://localhost:7070/api/user/login';
+  URL = 'https://69.197.150.152:8010/api/user/login';
 
   constructor(private http: HttpClient) { }
   getConfig() : Observable<any> {
