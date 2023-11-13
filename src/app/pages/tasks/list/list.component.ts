@@ -6,7 +6,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { NgbdJobListSortableHeader } from './list-sortable.directive';
 import { Ticket } from './list.model';
-import { TicketService } from './ticket.service';
+import { TicketService } from '../ticket.service';
 
 
 @Component({
@@ -60,6 +60,10 @@ export class ListComponent implements OnInit {
           this.lists = data;
         }
       })
+  }
+
+  editDataGet(){
+    console.log("calling details")
   }
 
   /**
@@ -148,7 +152,7 @@ export class ListComponent implements OnInit {
           }
         })
     }
-    
+
     setTimeout(() => {
       this.jobListForm.reset();
     }, 2000);

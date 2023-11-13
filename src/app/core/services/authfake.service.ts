@@ -15,6 +15,7 @@ export class AuthfakeauthenticationService {
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
+
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }

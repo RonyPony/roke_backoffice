@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { KanbanboardComponent } from './kanbanboard/kanbanboard.component';
 import { CreatetaskComponent } from './createtask/createtask.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
     {
@@ -11,8 +12,8 @@ const routes: Routes = [
         component: ListComponent
     },
     {
-        path: 'kanban',
-        component: KanbanboardComponent
+        path: 'detail/:id',
+        component: DetailComponent
     },
     {
         path: 'create',

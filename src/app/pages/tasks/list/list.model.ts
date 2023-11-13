@@ -17,3 +17,20 @@ export enum TicketStatus {
     Closed,
     Approved
 }
+
+export interface TicketDetail {
+  id: string
+  status: number
+  createdOn: string
+  updatedOn: string
+  description: string
+  ticketType: string
+  contactName: string
+  contactNumber: string
+  contactHasWhatsapp: boolean
+  locationId: string
+  assignedUserId: string
+  photoId1: string
+  photoId2: string
+  photoId3: string
+}
