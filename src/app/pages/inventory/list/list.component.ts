@@ -33,7 +33,7 @@ export class ListComponent {
     this.InventoryListForm = this.formBuilder.group({
       sucursal: ['', [Validators.required]],
       ItemCode: [''],
-      Serial: [''],
+      equipo: [''],
       UbicacionInterna: [''],
       Capacidad: [''],
       Marca: [''],

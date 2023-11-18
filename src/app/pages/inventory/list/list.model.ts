@@ -3,7 +3,7 @@ export interface Inventory {
     sucursal: string;
     ItemCode: string;
     status: Status;
-    Serial: string;
+    equipo: string;
     UbicacionInterna: string;
     Capacidad: string;
     Marca: string;
