@@ -43,7 +43,7 @@ export class ListComponent {
       longitude: ['', [Validators.required]],
       latitude: ['', [Validators.required]],
       contactName: ['', [Validators.required]],
-      status: '0',
+      ///status: '0',
       contactNumber: ['', [Validators.required]]
     });
   }

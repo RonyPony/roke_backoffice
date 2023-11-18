@@ -8,7 +8,7 @@
           <div class="d-flex align-items-center">
             <h5 class="mb-0 card-title flex-grow-1">Inventario</h5>
             <div class="flex-shrink-0 d-flex gap-1">
-              <a href="javascript:void(0);" class="btn btn-primary" (click)="openModal(content)">Crear Sucursal</a>
+              <a href="javascript:void(0);" class="btn btn-primary" (click)="openModal(content)">Crear Inventario</a>
             </div>
           </div>
         </div>
@@ -17,26 +17,28 @@
             <table class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
               <thead>
                 <tr>
-                  <th scope="col">Nombre</th>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Equipo</th>
+                  <th scope="col">Sucursal</th>
+                  <th scope="col">Ubicacion Interna</th>
                   <th scope="col">Estado</th>
-                  <th scope="col">Encargado</th>
-                  <th scope="col">Numero de Contacto</th>
-                  <th scope="col">Tiene Whatsapp?</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Capacidad</th>
+                  <th scope="col">Refrigerantes</th>
+                  <th scope="col">Accion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let data of Inventory">
+                  <td>{{data.itemCode}}</td>
+                  <td>{{data.equipo}}</td>
                   <td>{{data.sucursal}}</td>
-                  <td>{{data.status}}</td>
-                  <td>{{data.contactName}}</td>
-                  <td>{{data.contactNumber}}</td>
+                  <td>{{data.ubicacionInterna}}</td>
+                  <td>{{getStatusLabel(data.status)}}</td>
+                  <td>{{data.marca}}</td>
+                  <td>{{data.capacidad}}</td>
                   <td>
-                    <div class="form-check font-size-16">
-                      <input disabled id="customCheck" type="checkbox" class="form-check-input"
-                        [(ngModel)]="data.contactHasWhatsapp" />
-                      <label class="form-check-label" for="customCheck">&nbsp;</label>
-                    </div>
+                    {{data.refrigerante}}
                   </td>
                   <td>
                     <ul class="list-unstyled hstack gap-1 mb-0">
@@ -63,58 +65,74 @@
 <!-- Order Create Model -->
 <ng-template #content role="document" let-modal>
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Crear Sucurrsal</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Crear Inventario</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
   </div>
-  <form [formGroup]="InventoryListForm">
-    <div class="modal-body">
-      <div class="mb-3">
+  <form (ngSubmit)="saveInventory()" [formGroup]="InventoryListForm">
+    <div class="modal-body row">
+      <div class="mb-3 col-md-6">
         <label for="customername-field" class="form-label">Sucursal</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="sucursal"
-          [ngClass]="{ 'is-invalid': submitted && form['title'].errors }" />
+        <select class="form-control  multipleSelection" data-trigger name="invent" id="payment-field" formControlName="sucursal">
+         
+          <option value={{item.id}} *ngFor="let item of locations">{{item.sucursal}}</option>   
+      </select>
         <div *ngIf="submitted && form['sucursal'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['sucursal'].errors['required']">Nombre es requerid</div>
         </div>
       </div>
 
-      <div class="mb-3">
-        <label for="payment-field" class="form-label">Estado</label>
-        <select class="form-control" data-trigger name="payment-method" id="payment-field" formControlName="status"
-          [ngClass]="{ 'is-invalid': submitted && form['type'].errors }">
-          <option value="">Seleccione un estado</option>
-          <option value="mantenimiento">Activa</option>
-          <option value="instalacion">Inactiva</option>
-          <option value="reparación">Borrada</option>
-        </select>
-        <div *ngIf="submitted && form['status'].errors" class="invalid-feedback" align="left">
-          <div *ngIf="form['status'].errors['required']">Tipo es requerida</div>
-        </div>
-      </div>
 
-      <div class="mb-3">
-        <label for="customername-field" class="form-label">Nombre de Contacto</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="contactName"
+      <div class="mb-3 col-md-6">
+        <label for="customername-field" class="form-label">Codigo</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="ItemCode"
           [ngClass]="{ 'is-invalid': submitted && form['contactName'].errors }" />
         <div *ngIf="submitted && form['contactName'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['contactName'].errors['required']">Nombre de Contacto es requerida</div>
         </div>
       </div>
 
-      <div class="mb-3">
-        <label for="customername-field" class="form-label">Numero de Contacto</label>
-        <input type="text" id="customername-field" class="form-control" required formControlName="contactNumber"
+      <div class="mb-3 col-md-6" >
+        <label for="customername-field" class="form-label">equipo</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="equipo"
           [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
         <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
           <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
         </div>
       </div>
 
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="remember-check" formControlName="contactHasWhatsapp">
-          <label class="form-check-label" for="remember-check">
-            Tiene Whatsapp?
-          </label>
+      <div class="mb-3 col-md-6" >
+        <label for="customername-field" class="form-label">Ubicacion Interna</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="UbicacionInterna"
+          [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
+        <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6" >
+        <label for="customername-field" class="form-label">Capacidad</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="Capacidad"
+          [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
+        <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6" >
+        <label for="customername-field" class="form-label">Marca</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="Marca"
+          [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
+        <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6" >
+        <label for="customername-field" class="form-label">refrigerante</label>
+        <input type="text" id="customername-field" class="form-control" required formControlName="refrigerante"
+          [ngClass]="{ 'is-invalid': submitted && form['contactNumber'].errors }" />
+        <div *ngIf="submitted && form['contactNumber'].errors" class="invalid-feedback" align="left">
+          <div *ngIf="form['contactNumber'].errors['required']">Numero de Contacto es requerida</div>
         </div>
       </div>
     </div>
@@ -122,7 +140,7 @@
       <div class="hstack gap-2 justify-content-end">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal"
           (click)="modal.close('Close click')">Close</button>
-        <button type="submit" class="btn btn-success" id="add-btn">Guardar</button>
+        <button type="submit" class="btn btn-success" (click)="shoModal()" (click)="modalRef?.hide()" id="add-btn">Guardar</button>
       </div>
     </div>
   </form>
