@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Inventory } from './list.model';
+import { Inventory, LocationRoke } from './list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +17,8 @@ export class InventoryService {
   saveInventory(data: any) {
     return this.http.post<Inventory>(`${environment.urlApi}/api/inventory`, data);
   }
+  GetAllLocations() {
+    return this.http.get<LocationRoke[]>(`${environment.urlApi}/api/Location`);
+}
+
 }
