@@ -268,12 +268,12 @@ export const MENU: MenuItem[] = [
                 link: '/planning/list',
                 parentId: 43
             },
-            {
+           /* {
                 id: 45,
                 label: 'MENUITEMS.PLANNING.TEMPLATES.TEXT',
                 link: '/templates/list',
                 parentId: 43
-            }
+            }*/
         ]
     },
     {
@@ -378,8 +378,8 @@ export const MENU: MenuItem[] = [
     //         },
     //     ]
     // },
-    {
-        id: 57,
+   // {
+      /*  id: 57,
         label: 'MENUITEMS.JOBS.TEXT',
         icon: 'bx-briefcase-alt',
         subItems: [
@@ -388,7 +388,7 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.JOBS.LIST.JOBLIST',
                 link: '/jobs/list',
                 parentId: 57
-            },
+            },*/
             // {
             //     id: 59,
             //     label: 'MENUITEMS.JOBS.LIST.JOBGRID',
@@ -436,9 +436,9 @@ export const MENU: MenuItem[] = [
             //         }
             //     ]
             // }
-        ]
-    },
-    {
+     //   ]
+   // },
+  /*  {
         id: 58,
         label: 'MENUITEMS.BRIGADE.TEXT',
         icon: 'bx-briefcase-alt',
@@ -450,7 +450,7 @@ export const MENU: MenuItem[] = [
                 parentId: 57
             },
         ]
-    }
+    }*/
     // {
     //     id: 66,
     //     label: 'MENUITEMS.PAGES.TEXT',
